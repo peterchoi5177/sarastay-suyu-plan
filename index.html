@@ -106,7 +106,7 @@ label.q small{font-weight:500;color:var(--sub);font-size:12.5px;margin-left:4px}
 textarea,input[type=date],input[type=text]{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
 textarea{min-height:84px;resize:vertical}
 .nc{display:none;margin-top:6px}.nc.on{display:block}
-.send{margin-top:22px;width:100%;padding:16px;border-radius:14px;font-size:17px;font-weight:800;background:#FEE500;color:#191919;box-shadow:0 6px 18px #0002}
+.send{margin-top:22px;width:100%;padding:16px;border-radius:14px;font-size:17px;font-weight:800;background:var(--acc);color:#fff;box-shadow:0 6px 18px #0002}.send:disabled{opacity:.6}
 .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);padding-bottom:env(safe-area-inset-bottom)}
 .nav button{background:none;padding:9px 0 8px;font-size:11.5px;font-weight:700;color:#8D948F;display:flex;flex-direction:column;align-items:center;gap:2px}
 .nav button i{font-style:normal;font-size:19px;line-height:1}
@@ -127,7 +127,7 @@ textarea{min-height:84px;resize:vertical}
 <section class="page on" id="p-home">
   <span class="draft">계약 전 초안 · 함께 정해요</span>
   <h1>대표님, 오픈 준비<br>한눈에 보세요</h1>
-  <p class="sub" style="margin-top:6px">아래 내용은 모두 저희 제안이에요. 보시고 아래 <b>답하기</b> 탭에서 고르시면 카톡으로 바로 보내져요.</p>
+  <p class="sub" style="margin-top:6px">아래 내용은 모두 저희 제안이에요. 보시고 아래 <b>답하기</b> 탭에서 고르시고 <b>답변 완료</b>만 누르시면 저희에게 바로 전달돼요.</p>
   <div class="kpis">
     <div class="kpi dark"><div class="v">14실</div><div class="l">판매 객실 (제안)</div></div>
     <div class="kpi"><div class="v">12/15</div><div class="l">가오픈</div></div>
@@ -305,9 +305,9 @@ textarea{min-height:84px;resize:vertical}
 
 <!-- ANSWER -->
 <section class="page" id="p-answer">
-  <span class="draft">고르고 카톡으로 보내기</span>
+  <span class="draft">고르고 답변 완료 누르기</span>
   <h1>대표님 답변</h1>
-  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 잘못 누르셨으면 같은 버튼을 한 번 더 누르면 취소돼요. 다 고르시면 맨 아래 노란 버튼으로 카톡에 보내 주세요.</p>
+  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 잘못 누르셨으면 같은 버튼을 한 번 더 누르면 취소돼요. 다 고르시면 맨 아래 <b>답변 완료</b>를 눌러 주세요. 저희에게 바로 전달돼요.</p>
 
   <label class="q">1. 콘셉트</label>
   <div class="seg" data-k="concept">
@@ -355,9 +355,10 @@ textarea{min-height:84px;resize:vertical}
   <label class="q">7. 하고 싶으신 말씀 <small>선택</small></label>
   <textarea id="memo" placeholder="궁금한 점, 바꾸고 싶은 점 무엇이든"></textarea>
 
-  <button class="send" id="send">카톡으로 보내기</button>
+  <div class="box o" id="donebox" style="display:none;text-align:center"><b>✓ 답변이 전달됐어요</b><br><span id="donetime"></span><br>바꾸고 싶으시면 고치신 뒤 다시 눌러 주세요.</div>
+  <button class="send" id="send">답변 완료</button>
   <button id="reset" style="width:100%;margin-top:10px;padding:13px;border-radius:12px;background:#fff;border:1.5px solid var(--line);color:var(--sub);font-weight:700;font-size:15px">모두 지우고 처음부터 다시</button>
-  <p class="foot">휴대폰 공유 창에서 카카오톡을 고르시면 돼요.<br>공유가 안 되면 내용이 복사돼요. 카톡 창에 붙여 넣어 주세요.</p>
+  <p class="foot">누르시면 저희에게 바로 전달돼요. 나중에 바꾸셔도 마지막 답변 기준으로 볼게요.</p>
 </section>
 
 <p class="foot">(주)인장매니지먼트 · 사라스테이 수유 오픈 준비 · 계약 전 초안 (내용은 바뀔 수 있어요)</p>
@@ -389,7 +390,7 @@ textarea{min-height:84px;resize:vertical}
   document.querySelectorAll('.pick').forEach(function(b){b.onclick=function(){var on=setv(b.dataset.k,b.dataset.v);if(on&&b.dataset.go)go(b.dataset.go)}});
   document.querySelectorAll('.opt').forEach(function(o){o.querySelector('button').onclick=function(){setv(o.dataset.k,o.dataset.v,'5층: '+o.dataset.v.split(' (')[0]+' 선택')}});
   document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(A[sg.dataset.k]===b.dataset.v){delete A[sg.dataset.k];toast('선택을 취소했어요')}else{A[sg.dataset.k]=b.dataset.v}save()}})});
-  document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){document.getElementById(id).value=''});render();toast('모두 지웠어요');window.scrollTo(0,0)};
+  document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};document.getElementById('send').textContent='답변 완료';showDone&&setTimeout(showDone,0);['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){document.getElementById(id).value=''});render();toast('모두 지웠어요');window.scrollTo(0,0)};
   ['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
   var Q=[['concept','콘셉트 선택','A안 / B안 / 섞는 안 / 새 콘셉트'],['f5','5층 활용','제안 1 · 2 · 3 중'],['floor1','1층·지하 운영','저희가 같이 운영해도 될지'],['power','전기 계량기','고지서가 건물 전체인지'],['budget','집기 예산','제안대로 / 조정'],['cdate','계약 가능 날짜','']];
   function render(){
@@ -399,26 +400,27 @@ textarea{min-height:84px;resize:vertical}
     document.getElementById('nc').classList.toggle('on',A.concept==='새 콘셉트');
     var ul=document.getElementById('todo'),left=0,h='';
     Q.forEach(function(q,i){var v=A[q[0]];if(!v)left++;h+='<li><div class="ic'+(v?' ok':'')+'">'+(v?'✓':(i+1))+'</div><div><b>'+q[1]+'</b><small>'+(v?v:q[2])+'</small></div></li>'});
-    ul.innerHTML=h+'<li><div style="flex:1"><button class="pick" style="margin-top:4px" onclick="document.querySelector(\'.nav [data-p=answer]\').click()">'+(left?'답하러 가기':'답변 다 하셨어요 · 카톡으로 보내기')+'</button></div></li>';
+    ul.innerHTML=h+'<li><div style="flex:1"><button class="pick" style="margin-top:4px" onclick="document.querySelector(\'.nav [data-p=answer]\').click()">'+(left?'답하러 가기':(A._sent?'답변 전달 완료 · 다시 보기':'다 고르셨어요 · 답변 완료 누르러 가기'))+'</button></div></li>';
     document.getElementById('leftcnt').textContent=left?('· '+left+'개 남음'):'· 완료';
     var bd=document.getElementById('badge');bd.textContent=left||'';bd.style.display=left?'':'none';
   }
   render();
+  var URL_='https://script.google.com/macros/s/AKfycbxxddfsFK8R584qflq9rOtm8kD4Y6Kd_nQgxS3VoQ97BN5aRsysSjzEtl3ow4PNwwFNqw/exec';
+  function showDone(){var b=document.getElementById('donebox');if(A._sent){b.style.display='';document.getElementById('donetime').textContent='보낸 시각: '+A._sent}else{b.style.display='none'}}
+  showDone();
   document.getElementById('send').onclick=function(){
-    var L=['[사라스테이 수유 · 대표님 답변]'];
-    L.push('1. 콘셉트: '+(A.concept||'(미정)'));
-    if(A.concept==='새 콘셉트'){ if(A.nc1)L.push('  - 분위기: '+A.nc1); if(A.nc2)L.push('  - 참고: '+A.nc2); if(A.nc3)L.push('  - 손님: '+A.nc3); if(A.nc4)L.push('  - 넣을 것/피할 것: '+A.nc4); }
-    L.push('2. 5층 활용: '+(A.f5||'(미정)'));
-    L.push('3. 1층·지하 운영: '+(A.floor1||'(미정)'));
-    L.push('4. 전기 고지서: '+(A.power||'(미정)'));
-    L.push('5. 집기 예산: '+(A.budget||'(미정)'));
-    L.push('6. 계약 가능 날짜: '+(A.cdate||'(미정)'));
-    if(A.memo)L.push('7. 메모: '+A.memo);
-    var t=L.join('\n');
-    if(navigator.share){navigator.share({text:t}).catch(function(){})}
-    else if(navigator.clipboard){navigator.clipboard.writeText(t).then(function(){toast('복사했어요. 카톡에 붙여 넣어 주세요')})}
-    else{prompt('아래 내용을 복사해서 카톡에 보내 주세요',t)}
+    var miss=Q.filter(function(q){return !A[q[0]]}).length;
+    if(miss&&!confirm('아직 안 고르신 게 '+miss+'개 있어요. 지금 고른 것만 먼저 보낼까요?'))return;
+    var btn=this;btn.disabled=true;btn.textContent='보내는 중…';
+    var d={};['concept','nc1','nc2','nc3','nc4','f5','floor1','power','budget','cdate','memo'].forEach(function(k){d[k]=A[k]||''});
+    d.ua=(navigator.userAgent||'').slice(0,120);
+    fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
+      var t=new Date();A._sent=(t.getMonth()+1)+'/'+t.getDate()+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2);
+      try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){}
+      btn.disabled=false;btn.textContent='답변 다시 보내기';showDone();render();toast('답변이 전달됐어요. 감사합니다!');
+    }).catch(function(){btn.disabled=false;btn.textContent='답변 완료';alert('인터넷 연결을 확인하고 다시 눌러 주세요.')});
   };
+  if(A._sent)document.getElementById('send').textContent='답변 다시 보내기';
 })();
 </script>
 </body>
