@@ -57,7 +57,7 @@ h3{font-size:16px;font-weight:800}
 .pick{width:100%;margin-top:14px;padding:14px;border-radius:12px;font-size:16px;font-weight:800;color:#fff;background:var(--acc)}
 .pick.a{background:var(--for)}.pick.b{background:var(--brn)}
 .pick.sel{outline:3px solid #F3B48A;outline-offset:2px}
-.pick.sel:after{content:"  ✓ 선택됨"}
+.pick.sel:after{content:"  ✓ 선택됨 · 다시 누르면 취소"}
 .cmp .row{padding:10px 0;border-bottom:1px solid var(--line)}
 .cmp .row:last-child{border:none}
 .cmp .k{font-size:12.5px;font-weight:800;color:var(--sub);margin-bottom:4px}
@@ -307,7 +307,7 @@ textarea{min-height:84px;resize:vertical}
 <section class="page" id="p-answer">
   <span class="draft">고르고 카톡으로 보내기</span>
   <h1>대표님 답변</h1>
-  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 다 고르시면 맨 아래 노란 버튼으로 카톡에 보내 주세요.</p>
+  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 잘못 누르셨으면 같은 버튼을 한 번 더 누르면 취소돼요. 다 고르시면 맨 아래 노란 버튼으로 카톡에 보내 주세요.</p>
 
   <label class="q">1. 콘셉트</label>
   <div class="seg" data-k="concept">
@@ -356,6 +356,7 @@ textarea{min-height:84px;resize:vertical}
   <textarea id="memo" placeholder="궁금한 점, 바꾸고 싶은 점 무엇이든"></textarea>
 
   <button class="send" id="send">카톡으로 보내기</button>
+  <button id="reset" style="width:100%;margin-top:10px;padding:13px;border-radius:12px;background:#fff;border:1.5px solid var(--line);color:var(--sub);font-weight:700;font-size:15px">모두 지우고 처음부터 다시</button>
   <p class="foot">휴대폰 공유 창에서 카카오톡을 고르시면 돼요.<br>공유가 안 되면 내용이 복사돼요. 카톡 창에 붙여 넣어 주세요.</p>
 </section>
 
@@ -384,14 +385,16 @@ textarea{min-height:84px;resize:vertical}
   var d=Math.ceil((new Date('2026-12-15T00:00:00+09:00')-new Date())/86400000);
   document.getElementById('dday').textContent=d>0?('가오픈 D-'+d):(d===0?'가오픈 D-DAY':'가오픈 완료');
   // pick buttons
-  document.querySelectorAll('.pick').forEach(function(b){b.onclick=function(){A[b.dataset.k]=b.dataset.v;save();toast('선택했어요: '+b.dataset.v.split(' (')[0]);if(b.dataset.go)go(b.dataset.go)}});
-  document.querySelectorAll('.opt').forEach(function(o){o.querySelector('button').onclick=function(){A[o.dataset.k]=o.dataset.v;save();toast('5층: '+o.dataset.v.split(' (')[0]+' 선택')}});
-  document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){A[sg.dataset.k]=b.dataset.v;save()}})});
+  function setv(k,v,label){if(A[k]===v){delete A[k];save();toast('선택을 취소했어요');return false}A[k]=v;save();toast(label||('선택했어요: '+v.split(' (')[0]));return true}
+  document.querySelectorAll('.pick').forEach(function(b){b.onclick=function(){var on=setv(b.dataset.k,b.dataset.v);if(on&&b.dataset.go)go(b.dataset.go)}});
+  document.querySelectorAll('.opt').forEach(function(o){o.querySelector('button').onclick=function(){setv(o.dataset.k,o.dataset.v,'5층: '+o.dataset.v.split(' (')[0]+' 선택')}});
+  document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(A[sg.dataset.k]===b.dataset.v){delete A[sg.dataset.k];toast('선택을 취소했어요')}else{A[sg.dataset.k]=b.dataset.v}save()}})});
+  document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){document.getElementById(id).value=''});render();toast('모두 지웠어요');window.scrollTo(0,0)};
   ['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
   var Q=[['concept','콘셉트 선택','A안 / B안 / 섞는 안 / 새 콘셉트'],['f5','5층 활용','제안 1 · 2 · 3 중'],['floor1','1층·지하 운영','저희가 같이 운영해도 될지'],['power','전기 계량기','고지서가 건물 전체인지'],['budget','집기 예산','제안대로 / 조정'],['cdate','계약 가능 날짜','']];
   function render(){
     document.querySelectorAll('.pick').forEach(function(b){b.classList.toggle('sel',A[b.dataset.k]===b.dataset.v)});
-    document.querySelectorAll('.opt').forEach(function(o){o.classList.toggle('sel',A[o.dataset.k]===o.dataset.v);o.querySelector('button').textContent=A[o.dataset.k]===o.dataset.v?'✓ 선택했어요':'이렇게 할게요'});
+    document.querySelectorAll('.opt').forEach(function(o){o.classList.toggle('sel',A[o.dataset.k]===o.dataset.v);o.querySelector('button').textContent=A[o.dataset.k]===o.dataset.v?'✓ 선택했어요 (다시 누르면 취소)':'이렇게 할게요'});
     document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('sel',A[sg.dataset.k]===b.dataset.v)})});
     document.getElementById('nc').classList.toggle('on',A.concept==='새 콘셉트');
     var ul=document.getElementById('todo'),left=0,h='';
