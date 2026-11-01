@@ -1,11 +1,5 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<meta name="theme-color" content="#1F2A24">
-<title>사라스테이 수유 · 오픈 준비 (대표님용)</title>
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>사라스테이 수유 · 최종 제안 (대표님용)</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{--ink:#1F2A24;--sub:#5E6660;--line:#E4E2DC;--bg:#F5F3EE;--card:#fff;--acc:#E0702B;--accl:#FCE9DC;--for:#2F4A3A;--forl:#E3ECE6;--brn:#6B3A24;--brnl:#F3E6DC;--ok:#1E8E5A;--okl:#E3F4EB}
@@ -116,241 +110,285 @@ textarea{min-height:84px;resize:vertical}
 .toast.on{opacity:1}
 .foot{font-size:12px;color:var(--sub);text-align:center;margin:24px 0 8px}
 .plan{border-radius:12px;border:1px solid var(--line);margin-top:10px;background:#fff}
-</style>
-</head>
-<body>
-<div class="top"><div class="logo">SARA STAY<span>수유</span></div><div class="sp"></div><div class="dday" id="dday">가오픈 D-</div></div>
 
+.final{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--for);padding:4px 10px;border-radius:99px;margin-bottom:8px}
+.chg{list-style:none;counter-reset:c}
+.chg li{position:relative;padding:12px 0 12px 40px;border-bottom:1px solid var(--line)}
+.chg li:last-child{border:none}
+.chg li:before{counter-increment:c;content:counter(c);position:absolute;left:0;top:12px;width:28px;height:28px;border-radius:50%;background:var(--acc);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px}
+.chg b{display:block;font-size:15.5px}.chg small{color:var(--sub);font-size:13.5px}
+.stg{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin-bottom:12px;position:relative}
+.stg .no{display:inline-block;font-size:12px;font-weight:800;color:#fff;background:var(--for);padding:3px 10px;border-radius:6px}
+.stg .no.o{background:var(--acc)}.stg .no.g{background:#8C9196}
+.stg h3{margin:8px 0 4px;font-size:17px}
+.stg .when{font-size:13px;color:var(--sub);font-weight:600}
+.arrow{text-align:center;color:var(--sub);font-size:20px;margin:-4px 0 8px}
+.mini{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mini div{background:var(--bg);border-radius:10px;padding:9px 11px}
+.mini b{display:block;font-size:17px}.mini span{font-size:12px;color:var(--sub);font-weight:600}
+.path{border:2px solid var(--line);border-radius:14px;padding:14px;margin-bottom:10px;background:#fff}
+.path .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.path .why{font-size:13.5px;margin-top:6px}
+table.t{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:12px;overflow:hidden}
+table.t th,table.t td{padding:8px 6px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+table.t th:first-child,table.t td:first-child{text-align:left;white-space:normal}
+table.t thead th{background:var(--ink);color:#fff;font-weight:700;font-size:12px}
+table.t tr.hl td{background:var(--forl);font-weight:800}
+.scroll{overflow-x:auto;margin:0 -2px;border:1px solid var(--line);border-radius:12px}
+.note{font-size:12px;color:var(--sub);margin-top:8px;line-height:1.5}
+.price{display:flex;align-items:baseline;gap:8px;margin:6px 0 2px}
+.price .v{font-size:30px;font-weight:800;color:var(--acc)}
+.price .u{font-size:13px;color:var(--sub);font-weight:700}
+.chk{list-style:none}
+.chk li{padding:9px 0 9px 26px;position:relative;border-bottom:1px solid var(--line);font-size:14.5px}
+.chk li:last-child{border:none}
+.chk li:before{content:"✓";position:absolute;left:2px;top:9px;color:var(--ok);font-weight:800}
+.chk li small{display:block;color:var(--sub);font-size:12.5px}
+.ext{display:grid;grid-template-columns:1fr auto;gap:6px 10px;font-size:13.5px}
+.ext span:nth-child(even){text-align:right;font-weight:700}
+</style></head><body>
+<div class="top"><div class="logo">SARA STAY<span>수유</span></div><div class="sp"></div><div class="dday" id="dday">오픈 D-</div></div>
 <div class="wrap">
 
 <!-- HOME -->
 <section class="page on" id="p-home">
-  <span class="draft">계약 전 초안 · 함께 정해요</span>
-  <h1>대표님, 오픈 준비<br>한눈에 보세요</h1>
-  <p class="sub" style="margin-top:6px">아래 내용은 모두 저희 제안이에요. 보시고 아래 <b>답하기</b> 탭에서 고르시고 <b>답변 완료</b>만 누르시면 저희에게 바로 전달돼요.</p>
+  <span class="final">최종 제안 · 11/1 새로 정리</span>
+  <h1>대표님, 한 번에<br>다 안 하셔도 돼요</h1>
+  <p class="sub" style="margin-top:6px">지난번 자료를 보시고 주신 말씀을 반영해서, 처음 드는 돈을 줄이는 쪽으로 다시 정리했어요. <b>지난번과 달라진 점은 4가지</b>예요.</p>
+
+  <div class="card" style="margin-top:14px"><ul class="chg">
+    <li><b>11실로 먼저 열어요</b><small>2~4층 11실을 팔 수 있고 무인으로 운영되는 상태까지만 만들어 12/15에 열어요. 5·6층은 자리 잡은 뒤에 해요.</small></li>
+    <li><b>사람은 처음에만, 그다음은 같이 정해요</b><small>오픈 초기에만 임시 매니저를 두고, 운영해 보면서 무인으로 갈지 사람을 둘지 정해요.</small></li>
+    <li><b>판매가를 서울 호스텔 시세로 다시 잡았어요</b><small>동네 모텔이 아니라 동대문·종로 호스텔과 비교해서 1박 평균 10만 원 기준으로 다시 계산했어요.</small></li>
+    <li><b>계약 조건 최종안을 넣었어요</b><small>오픈 준비 600만 원 · 운영 수수료 총매출 10% (조건 탭)</small></li>
+  </ul></div>
+
   <div class="kpis">
-    <div class="kpi dark"><div class="v">14실</div><div class="l">판매 객실 (제안)</div></div>
-    <div class="kpi"><div class="v">12/15</div><div class="l">가오픈</div></div>
-    <div class="kpi"><div class="v">12/2</div><div class="l">판매 오픈</div></div>
-    <div class="kpi"><div class="v">공사 X</div><div class="l">비품·집기로만</div></div>
+    <div class="kpi dark"><div class="v">11실</div><div class="l">1단계 판매 객실</div></div>
+    <div class="kpi"><div class="v">약 2,820만</div><div class="l">1단계 집기 (지난번 3,890만)</div></div>
+    <div class="kpi"><div class="v">12/1</div><div class="l">판매 오픈</div></div>
+    <div class="kpi"><div class="v">12/15</div><div class="l">오픈</div></div>
   </div>
 
   <h2>대표님께 여쭤볼 것 <span class="sub" id="leftcnt"></span></h2>
   <div class="card"><ul class="list" id="todo"></ul></div>
 
-  <h2>받은 것</h2>
+  <h2>정해진 것</h2>
   <div class="card"><ul class="list">
-    <li><div class="ic ok">✓</div><div><b>호스텔 등록</b><small>10/27 강북구청 서류 제출 예정</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>사업자등록증</b><small>법인 설립 완료 · 이번 주 세무사님 통해 발급</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>전기요금 고지서</b><small>10월분 받음 · 계약전력 5kW로 확인 (아래 확인 1건)</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>집기 예산</b><small>저희 제안안으로 진행 (예산 탭)</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>도면</b><small>층별 평면 확인 완료</small></div></li>
+    <li><div class="ic ok">✓</div><div><b>콘셉트 A안 · 북한산 베이스캠프</b><small>대표님이 골라 주셨어요</small></div></li>
+    <li><div class="ic ok">✓</div><div><b>1층·지하는 저희가 같이 운영</b><small>대표님 동의 (10/26)</small></div></li>
+    <li><div class="ic ok">✓</div><div><b>공사 없이 비품·집기로만</b><small>간판은 페인트 글씨 + 조명 정도</small></div></li>
   </ul></div>
 
-  <h2>소식</h2>
-  <div class="card feed"><ul class="list">
-    <li><div><div class="d">10/27 (화)</div><b>호스텔 등록 서류 제출</b><small>대표님 → 강북구청. 등록증이 나오면 판매 채널 입점을 시작해요</small></div></li>
-    <li><div><div class="d">10/26 (월)</div><b>콘셉트 2안 · 예산 · 일정 초안 공유</b><small>이 페이지로 정리했어요</small></div></li>
-    <li><div><div class="d">10/26 (월)</div><b>도면 확인</b><small>2~4층 퀸 11실, 5층 방 2개 + 라운지, 6층 가족실(퀸 2), 지하 라운지 홀</small></div></li>
-  </ul></div>
-  <div class="box o"><b>전기 확인 부탁드려요</b><br>10월 고지서 기준 계약전력이 5kW예요(가정집 수준). 객실 14개에 전기 난방·에어컨·세탁기를 같이 쓰면 부족할 수 있어요. 이 고지서가 건물 전체 계량기인지 알려 주시면, 필요할 때 계약 첫 주에 한전 증설 신청을 함께 진행할게요.</div>
-</section>
-
-<!-- CONCEPT -->
-<section class="page" id="p-concept">
-  <span class="draft">고르시거나, 새 콘셉트를 주세요</span>
-  <h1>콘셉트 두 가지</h1>
-  <p class="sub">같은 건물, 다른 이야기예요. 사진은 현장 사진에 AI로 분위기를 입혀 본 참고 이미지예요.</p>
-
-  <h2><span class="tag a">A안</span>북한산 베이스캠프</h2>
-  <p><b>"북한산 아래, 진짜 서울 동네의 베이스캠프"</b></p>
   <div class="swipe">
-    <figure><img src="a_front.jpg" alt=""><span class="ai">AI 연출</span><figcaption>1층 프론트 <span>가라지 느낌</span></figcaption></figure>
-    <figure><img src="a_room.jpg" alt=""><span class="ai">AI 연출</span><figcaption>객실 <span>봉우리 이름 방</span></figcaption></figure>
-    <figure><img src="a_kitchen.jpg" alt=""><span class="ai">AI 연출</span><figcaption>2층 공유주방 <span>등산 지도 라운지</span></figcaption></figure>
-    <figure><img src="a_roof.jpg" alt=""><span class="ai">AI 연출</span><figcaption>옥상 데크 <span>아침 커피</span></figcaption></figure>
     <figure><img src="a_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>외관 <span>숲 초록 간판</span></figcaption></figure>
+    <figure><img src="a_front.jpg" alt=""><span class="ai">AI 연출</span><figcaption>1층 프론트 <span>무인 커피</span></figcaption></figure>
+    <figure><img src="a_room.jpg" alt=""><span class="ai">AI 연출</span><figcaption>객실 <span>봉우리 이름 방</span></figcaption></figure>
+    <figure><img src="a_kitchen.jpg" alt=""><span class="ai">AI 연출</span><figcaption>2층 공유주방</figcaption></figure>
+    <figure><img src="a_roof.jpg" alt=""><span class="ai">AI 연출</span><figcaption>옥상 데크</figcaption></figure>
   </div>
-  <div class="hint">← 옆으로 넘겨 보세요 →</div>
-  <ul class="pts">
-    <li>수유역에서 마을버스로 북한산 둘레길 입구까지 15~20분, 정상 코스 입구까지 약 1시간</li>
-    <li>강남·홍대 호스텔엔 없는 이야기 · 외국인 하이커와 한 달 살기 손님</li>
-    <li>객실 이름은 층이 오를수록 높은 봉우리 (2층 원효봉 … 6층 백운대)</li>
-    <li>색: 숲 초록 · 화강암 회색 · 원목 · 오렌지 포인트</li>
-  </ul>
-  <div class="box a">슬로건 예: <b>살아보는 서울, 올라보는 북한산</b></div>
-  <button class="pick a" data-k="concept" data-v="A안 북한산 베이스캠프">A안으로 할게요</button>
-
-  <h2 style="margin-top:34px"><span class="tag b">B안</span>수유 1988 레트로</h2>
-  <p><b>"그 시절 서울 동네에 하룻밤"</b></p>
-  <div class="swipe">
-    <figure><img src="b_front.jpg" alt=""><span class="ai">AI 연출</span><figcaption>1층 프론트 <span>다방 · LP</span></figcaption></figure>
-    <figure><img src="b_room.jpg" alt=""><span class="ai">AI 연출</span><figcaption>객실 <span>꽃무늬 이불 · 자개</span></figcaption></figure>
-    <figure><img src="b_roof.jpg" alt=""><span class="ai">AI 연출</span><figcaption>옥상 평상 <span>장독 · 빨랫줄</span></figcaption></figure>
-    <figure><img src="b_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>외관 <span>레트로 간판</span></figcaption></figure>
-  </div>
-  <div class="hint">← 옆으로 넘겨 보세요 →</div>
-  <ul class="pts">
-    <li>응답하라 1988 · 오징어 게임 배경 동네 쌍문동이 한 정거장</li>
-    <li>둘리뮤지엄 · 우이천 둘리 벽화 · 수유시장 노포 산책 코스</li>
-    <li>객실 이름은 그 시절 가게 (문방구 · 만화방 · 사진관 …)</li>
-    <li>보이는 건 옛날, 위생·침구는 최신</li>
-  </ul>
-  <div class="box b">슬로건 예: <b>그 시절 서울에 하룻밤</b></div>
-  <button class="pick b" data-k="concept" data-v="B안 수유 1988 레트로">B안으로 할게요</button>
-
-  <h2 style="margin-top:34px">두 안 비교</h2>
-  <div class="card cmp">
-    <div class="row"><div class="k">외국인 손님</div><div class="ab"><div class="x">"북한산 근처"로 바로 이해</div><div class="y">아시아는 응팔, 서양은 오징어 게임</div></div></div>
-    <div class="row"><div class="k">SNS 화제성</div><div class="ab"><div class="x">보통 (등산 커뮤니티)</div><div class="y">높음 (사진 장면 많음)</div></div></div>
-    <div class="row"><div class="k">12월 겨울 오픈</div><div class="ab"><div class="x">등산 비수기, 동네 살기로 보완</div><div class="y">계절 영향 적음</div></div></div>
-    <div class="row"><div class="k">유행</div><div class="ab"><div class="x">덜 탐</div><div class="y">몇 년마다 소품 교체</div></div></div>
-    <div class="row"><div class="k">소품 준비</div><div class="ab"><div class="x">새 제품으로 빠르게</div><div class="y">빈티지 구하는 시간 필요</div></div></div>
-  </div>
-  <div class="box o"><b>섞는 것도 가능해요.</b> A안을 기본으로, 1층 프론트·라운지와 지하만 레트로로. 예산은 두 안 모두 비슷해요.</div>
-  <button class="pick" data-k="concept" data-v="섞는 안 (A 기본 + 1층·지하 레트로)">섞는 안으로 할게요</button>
-  <button class="pick" style="background:#fff;color:var(--ink);border:2px solid var(--ink)" data-k="concept" data-v="새 콘셉트" data-go="answer">다른 콘셉트를 말씀드릴게요</button>
+  <p class="hint">← 옆으로 넘겨 보세요 · 현장 사진에 분위기를 입힌 참고 이미지예요 →</p>
+  <button class="pick a" onclick="document.querySelector('.nav [data-p=step]').click()">3단계 진행 방법 보기 →</button>
 </section>
 
-<!-- SPACE -->
-<section class="page" id="p-space">
-  <span class="draft">제안</span>
-  <h1>층별 구성</h1>
-  <p class="sub">공사 없이 지금 있는 공간을 그대로 써요.</p>
-  <div class="card">
-    <div class="floor"><div class="f">옥상</div><div><b>뷰 데크</b><small>북한산 뷰 · 아침 커피 · 쉬는 곳</small></div></div>
-    <div class="floor"><div class="f s">6층</div><div><b>가족실 1실</b><small>퀸 2개 · 최대 4인 · 주방 · 북한산 뷰</small></div></div>
-    <div class="floor"><div class="f s">5층</div><div><b>객실 2실 + 라운지</b><small>퀸 방 2개 판매 · 라운지 활용은 아래에서 골라 주세요</small></div></div>
-    <div class="floor"><div class="f s">2~4층</div><div><b>객실 11실</b><small>모두 퀸 · 방마다 전용 욕실</small></div></div>
-    <div class="floor"><div class="f">2층</div><div><b>공유주방 · 라운지</b><small>손님 공용 주방과 쉬는 공간</small></div></div>
-    <div class="floor"><div class="f">1층</div><div><b>프론트 · 무인 커피</b><small>무인 원두커피 · 주차장 캠핑 라운지 (펍은 나중에)</small></div></div>
-    <div class="floor"><div class="f">지하</div><div><b>라운지 · 세탁 · 사무</b><small>큰 라운지 홀 · 세탁실 · 린넨 · 매니저 공간</small></div></div>
+<!-- STEP -->
+<section class="page" id="p-step">
+  <span class="draft">제안 · 의견 주세요</span>
+  <h1>3단계로 나눠서 가면<br>어떨까요?</h1>
+  <p class="sub" style="margin-top:6px">처음엔 꼭 필요한 것만 하고, 실제로 운영해 본 결과를 보고 다음을 정하는 방식이에요.</p>
+
+  <div class="stg" style="margin-top:14px">
+    <span class="no">1단계</span> <span class="when">지금 ~ 12/15 오픈</span>
+    <h3>팔 수 있고, 무인으로 돌아가는 상태</h3>
+    <ul class="pts">
+      <li>2~4층 객실 11실 세팅 (침구·커튼·TV·비품)</li>
+      <li>무인 체크인: 도어락, 자동 안내 메시지, 하우스룰</li>
+      <li>판매채널 국문·영문 입점, 요금 세팅</li>
+      <li>청소·린넨은 외주 업체로 (퇴실할 때마다 부르는 방식)</li>
+      <li>2층 공유주방, 1층 프론트·무인 커피, 지하 세탁실, 옥상은 기본만</li>
+    </ul>
+    <div class="mini"><div><b>약 2,820만</b><span>집기 (VAT 별도, 예비비 포함)</span></div><div><b>−1,070만</b><span>지난번 제안 3,890만 대비</span></div></div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="stg">
+    <span class="no o">2단계</span> <span class="when">오픈 후 1~3개월</span>
+    <h3>자리 잡을 때까지 임시 매니저</h3>
+    <ul class="pts">
+      <li>첫 손님 응대, 청소 품질 잡기, 무인 동선 다듬기</li>
+      <li>첫 리뷰를 빠르게 쌓기 (리뷰가 곧 판매가)</li>
+      <li>비용: 매니저 1명 월 약 280만 원, 최대 3개월 (운영비)</li>
+    </ul>
+    <div class="box a"><b>3개월 안에 이렇게 되면 완전 무인으로 가요</b><br>· 리뷰 평점 5점 만점 4.7 이상<br>· 무인 체크인 문제 주 1건 이하<br>· 현장 출동 주 1회 이하<br>· 청소 불만 월 1건 이하</div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="stg">
+    <span class="no g">3단계</span> <span class="when">3개월 뒤, 결과를 보고 같이 정해요</span>
+    <h3>운영 방식과 5·6층</h3>
+    <p class="sub">이익은 1박 10만 원·점유율 72% 기준, 운영비와 수수료를 뺀 월 운영이익이에요 (숫자 탭).</p>
   </div>
 
-  <h2>5층은 어떻게 쓸까요?</h2>
-  <p class="sub">퀸 방 2개 + 라운지(침대 없는 방) + 주방 + 욕실 2개 구조예요.</p>
-  <img class="plan" src="plan_5f.jpg" alt="5층 평면">
-  <div style="height:12px"></div>
-  <div class="opt" data-k="f5" data-v="제안 1 (객실 2 + 라운지 스태프룸)">
-    <div class="h"><span class="tag a">제안 1</span><h3>객실 2실 + 라운지는 스태프룸</h3></div>
-    <p>퀸 방 2개는 판매, 라운지에 이층침대 2개(스태프 4명), 욕실 2개는 남자용·여자용</p>
-    <div class="good">좋은 점</div><p>밤에도 바로 대응할 사람이 건물에 있어요 · 스태프 숙소 월세가 안 들어요</p>
-    <div class="care">고려할 점</div><p>손님과 스태프가 같은 층을 써요</p>
-    <button>이렇게 할게요</button>
+  <div class="path">
+    <div class="h"><span class="tag g">기본</span><b>11실 그대로 · 완전 무인</b></div>
+    <p class="why">1단계 그대로 운영해요. 추가 투자 없음.</p>
+    <div class="mini"><div><b>월 약 1,210만</b><span>운영이익</span></div><div><b>0원</b><span>추가 집기</span></div></div>
   </div>
-  <div class="opt" data-k="f5" data-v="제안 2 (5층 전체 가족·단체실 1실)">
-    <div class="h"><span class="tag" style="background:#C69C6D">제안 2</span><h3>5층 전체를 가족·단체실 1실로</h3></div>
-    <p>방 2개 + 라운지 + 주방을 한 팀에게 (최대 4~6인)</p>
-    <div class="good">좋은 점</div><p>손님 동선이 깔끔하고 객실 단가가 높아요</p>
-    <div class="care">고려할 점</div><p>스태프 숙소를 근처에 따로 구해야 해요 · 전체 13실이 돼요</p>
-    <button>이렇게 할게요</button>
+  <div class="path">
+    <div class="h"><span class="tag a">A</span><b>5·6층 가족실 2실 · 완전 무인</b></div>
+    <p class="why">5층·6층을 각각 가족실로 열어 13실. 가족·친구 단위 손님을 받아요. 무인으로 문제없을 때.</p>
+    <div class="mini"><div><b>월 약 1,720만</b><span>운영이익</span></div><div><b>약 500만</b><span>추가 집기</span></div></div>
   </div>
-  <div class="opt" data-k="f5" data-v="제안 3 (객실 2 + 라운지 손님 공용)">
-    <div class="h"><span class="tag g">제안 3</span><h3>객실 2실 + 라운지는 손님 공용</h3></div>
-    <p>퀸 방 2개 판매, 라운지·주방은 5층 손님 휴게 공간</p>
-    <div class="good">좋은 점</div><p>"주방 있는 방"으로 차별화돼요</p>
-    <div class="care">고려할 점</div><p>스태프 숙소를 근처에 따로 구해야 해요</p>
-    <button>이렇게 할게요</button>
+  <div class="path">
+    <div class="h"><span class="tag a">A+</span><b>5·6층 가족실 2실 · 매니저 상시</b></div>
+    <p class="why">13실 그대로, 현장에 사람이 꼭 필요하다고 판단될 때 매니저 1명을 계속 둬요.</p>
+    <div class="mini"><div><b>월 약 1,440만</b><span>운영이익</span></div><div><b>약 500만</b><span>추가 집기</span></div></div>
   </div>
-
-  <h2>외관 · 간판 제안</h2>
-  <div class="swipe">
-    <figure><img src="a_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>A안 <span>숲 초록 글씨 · 카키 캠핑 의자</span></figcaption></figure>
-    <figure><img src="b_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>B안 <span>갈색 레트로 글씨 · 체크 담요</span></figcaption></figure>
+  <div class="path">
+    <div class="h"><span class="tag b">B</span><b>매니저 + 볼런티어 스태프 · 14실</b></div>
+    <p class="why">5층에 직원 숙소를 두고 방 2개는 판매, 6층은 가족실. 이익은 무인과 비슷하지만 <b>밤에도 건물에 사람이 있고, 라운지 프로그램·장기 외국인 손님 케어</b>처럼 손님 경험을 키우고 싶을 때 고르는 길이에요.</p>
+    <div class="mini"><div><b>월 약 1,750만</b><span>운영이익</span></div><div><b>약 550만</b><span>추가 집기</span></div></div>
   </div>
-  <ul class="pts">
-    <li>주차장 위 띠에 페인트 글씨 + 위에서 비추는 암 조명 (박스 간판보다 저렴)</li>
-    <li>주차칸 가운데에 접이식 캠핑 의자·테이블·랜턴, 차가 오면 정리</li>
-  </ul>
+  <p class="note">5·6층 객실은 3단계에 추가하는 경우의 숫자예요. 가족실은 일반실의 1.9배 가격, 점유율 65%로 가정했어요.</p>
 </section>
 
-<!-- BUDGET + SCHEDULE -->
-<section class="page" id="p-plan">
-  <span class="draft">제안 · VAT 별도</span>
-  <h1>집기 예산 제안</h1>
-  <div class="total"><div>제안 예산<br><span style="font-size:12px;color:#C9D1CC">예비비 10% 포함</span></div><div class="v">3,888만 원</div></div>
-  <div class="range"><span>최소안 3,217만</span><span>권장안 7,153만</span></div>
-  <p class="sub" style="margin-top:10px">최소안을 기본으로, 리뷰와 운영에 바로 영향 주는 것만 올렸어요 <b style="color:var(--acc)">(주황색)</b>. 이미 있는 침대·매트리스·주방·조명·에어컨은 빼고 계산했어요.</p>
-  <div class="card bud" style="margin-top:12px">
-    <div class="r"><div class="n">2~4층 객실 11실</div><div class="p up">623만</div><div class="m">침구·수건·커튼 원단을 한 단계 올림</div></div>
-    <div class="r"><div class="n">5층 객실 2실 + 스태프룸</div><div class="p">177만</div><div class="m">침구 · 커튼 · 이층침대 2 (제안 1 기준)</div></div>
-    <div class="r"><div class="n">6층 가족실</div><div class="p">150만</div><div class="m">침구 · 커튼 · 소파·테이블</div></div>
-    <div class="r"><div class="n">2층 공유주방·라운지</div><div class="p">220만</div><div class="m">테이블 · 냉장고 · 소형가전 · 식기</div></div>
-    <div class="r"><div class="n">1층 프론트·무인 커피·캠핑</div><div class="p">400만</div><div class="m">프론트 데스크 · 원두커피머신 · 캠핑 가구</div></div>
-    <div class="r"><div class="n">지하 세탁·사무·라운지</div><div class="p up">790만</div><div class="m">세탁기·건조기 2세트 (14실 회전용)</div></div>
-    <div class="r"><div class="n">옥상</div><div class="p">150만</div><div class="m">데크 타일 · 벤치 · 조명</div></div>
-    <div class="r"><div class="n">운영 장비</div><div class="p up">675만</div><div class="m">도어락 15 · 층별 Wi-Fi · CCTV</div></div>
-    <div class="r"><div class="n">브랜딩·사인·촬영</div><div class="p up">270만</div><div class="m">간판 · 문패 · 사진 촬영 강화 · 안내물</div></div>
-    <div class="r"><div class="n">오픈 소모품</div><div class="p">80만</div><div class="m">휴지 · 세제 · 어메니티 첫 달분</div></div>
-  </div>
-  <p class="sub">온라인 시세 기준 추정이라 견적을 받으면 바뀔 수 있어요.</p>
-  <div class="seg" data-k="budget">
-    <button data-v="제안 예산으로 진행">제안 예산으로 진행</button>
-    <button data-v="조정이 필요해요">조정이 필요해요</button>
+<!-- NUM -->
+<section class="page" id="p-num">
+  <span class="draft">숫자 · 추정</span>
+  <h1>판매가 기준을<br>다시 잡았어요</h1>
+  <p class="sub" style="margin-top:6px">지난번엔 수유역 주변 모텔 가격이 섞여 1박 8만 원으로 낮게 잡혔어요. 이번엔 손님이 실제로 비교하는 <b>서울 호스텔·호텔</b> 가격을 봤어요.</p>
+
+  <h2>2인 1박 판매가 (중앙값)</h2>
+  <div class="scroll"><table class="t">
+    <thead><tr><th>비교 대상</th><th>1월 평일</th><th>1월 토</th><th>4월 평일</th><th>4월 토</th></tr></thead>
+    <tbody>
+      <tr><td>동대문 호스텔</td><td>9.0만</td><td>12.6만</td><td>11.4만</td><td>18.0만</td></tr>
+      <tr><td>종로 호스텔</td><td>7.2만</td><td>15.3만</td><td>11.5만</td><td>17.1만</td></tr>
+      <tr><td>동대문 3성 호텔</td><td>9.4만</td><td>16.3만</td><td>13.5만</td><td>20.2만</td></tr>
+      <tr><td>수유·미아 호텔</td><td>9.4만</td><td>11.5만</td><td>10.4만</td><td>14.0만</td></tr>
+    </tbody></table></div>
+  <p class="note">부킹닷컴 2인 1박 최저가, 지역별 약 15곳의 가운데 값 (세금 포함, 2026.11.1 조회). 12월 토요일은 동대문 호스텔도 약 20만 원이에요.</p>
+
+  <div class="box a" style="margin-top:12px"><b>수유는 동대문까지 4호선 20분</b><br>동대문 호스텔보다 15~20% 낮게, 대신 <b>전 객실 개인 욕실 · 새 시설 · 북한산</b>으로 경쟁해요.<br>보수 <b>9만</b> · 기준 <b>10만</b> · 목표 <b>11.5만</b> (1년 평균, 점유율 72%)</div>
+
+  <h2>월 운영이익 (운영비·수수료 뺀 후)</h2>
+  <div class="scroll"><table class="t">
+    <thead><tr><th>운영 방식</th><th>9만</th><th>10만</th><th>11.5만</th></tr></thead>
+    <tbody>
+      <tr class="hl"><td>11실 · 무인 (1단계 이후 기본)</td><td>1,020만</td><td>1,210만</td><td>1,480만</td></tr>
+      <tr><td>11실 · 임시 매니저 기간</td><td>740만</td><td>930만</td><td>1,200만</td></tr>
+      <tr><td>A 13실 · 무인</td><td>1,480만</td><td>1,720만</td><td>2,080만</td></tr>
+      <tr><td>A+ 13실 · 매니저 상시</td><td>1,200만</td><td>1,440만</td><td>1,800만</td></tr>
+      <tr><td>B 14실 · 매니저 + 볼런티어</td><td>1,510만</td><td>1,750만</td><td>2,120만</td></tr>
+    </tbody></table></div>
+  <p class="note">11실·10만 원 기준 월 매출 약 2,410만 원, 연 운영이익 약 1.45억 원.</p>
+
+  <h2>계산에 넣은 비용</h2>
+  <div class="card"><ul class="chk">
+    <li>판매채널·카드 수수료 매출의 14%</li>
+    <li>청소·린넨 외주 퇴실 1건 2.5만 원 <small>장기 외국인 손님(평균 7박)이 30% 섞인다고 보고 계산</small></li>
+    <li>전기·가스·수도·통신 월 200만 원</li>
+    <li>소모품 1박 2천 원</li>
+    <li>운영 수수료 총매출 10%</li>
+    <li>매니저 월 280만 원 · 볼런티어 스태프 1명 월 30만 원 (식비 등) <small>B는 청소를 스태프가 하고 린넨만 외주</small></li>
+  </ul></div>
+  <p class="note">오픈 후 2~3개월은 리뷰를 쌓으려고 낮은 가격으로 팔 거라 이 숫자보다 적게 나와요. 한 달 이상 묵는 손님은 할인가라 평균 판매가를 조금 낮춰요. 모두 추정이고, 실제 실적으로 매달 보고드릴게요.</p>
+</section>
+
+<!-- TERMS -->
+<section class="page" id="p-terms">
+  <span class="draft">계약 조건 최종안 · VAT 별도</span>
+  <h1>저희가 하는 일과<br>비용이에요</h1>
+
+  <h2>① 오픈 준비 (턴키)</h2>
+  <div class="card">
+    <div class="price"><span class="v">600만 원</span><span class="u">한 번 · 계약 때 50%, 오픈 때 50%</span></div>
+    <ul class="chk" style="margin-top:6px">
+      <li>브랜딩 <small>로고·색·글씨체, 간판·층별 사인·객실 문패 디자인, 다국어 안내물</small></li>
+      <li>공간 연출 <small>콘셉트에 맞춘 객실·공용부 배치와 소품 계획</small></li>
+      <li>집기 선정·주문·설치 <small>약 100가지 품목 고르기, 가격 비교, 주문, 받아서 검수, 설치·배치</small></li>
+      <li>사진 <small>촬영 디렉팅과 객실·공용부 컷 고르기 (촬영비는 실비)</small></li>
+      <li>판매채널 <small>국내·해외 채널 국문·영문 입점, 상세페이지, 날짜별 요금 세팅</small></li>
+      <li>무인 운영 세팅 <small>도어락·와이파이 연동, 예약하면 자동으로 가는 안내 메시지, 하우스룰</small></li>
+      <li>청소·린넨 체계 <small>업체 선정, 청소 기준서, 첫 교육</small></li>
+      <li>운영 매뉴얼 · 임시 매니저 채용과 교육</li>
+      <li>네이버 지도·구글 지도 등록, 오픈 프로모션</li>
+    </ul>
+    <div class="box o"><b>따로 맡기시면</b> (2026년 온라인 시세)
+      <div class="ext" style="margin-top:6px"><span>브랜딩 (로고 + 가이드)</span><span>100~500만</span><span>숙소 사진 촬영</span><span>30~100만</span><span>판매채널 세팅 컨설팅</span><span>10~100만</span><span>숙박 오픈 컨설팅</span><span>110만~</span></div>
+      <div style="margin-top:6px">여기에 집기 고르기·주문·설치와 무인 세팅이 더해져요. 저희는 <b>오픈 후 직접 운영할 팀</b>이 처음부터 세팅해서, 운영하면서 다시 고칠 일이 적어요.</div>
+    </div>
+    <p class="note">실비로 따로: 집기 대금, 사진 촬영비, 간판 제작비, 외부 설치 인력. 영수증 그대로 받고 이윤은 붙이지 않아요. 지금까지 드린 사업성 분석·콘셉트·예산안·공정표는 따로 받지 않아요.</p>
   </div>
 
-  <h2 style="margin-top:34px">오픈 일정 (초안)</h2>
-  <p class="sub" style="margin-bottom:12px">11월 첫 주에 계약하면 12/15 가오픈이 가능해요. <b style="color:var(--acc)">주황색</b>은 대표님이 하실 일이에요.</p>
+  <h2>② 운영</h2>
   <div class="card">
-    <div class="wk key"><div class="dot"></div><div class="t">1주<span>11/2~8</span></div><ul><li class="me">계약 · 콘셉트 · 예산 확정</li><li>주문제작 발주 (침구 커버 · 타월 · 맞춤 커튼)</li><li>전기 용량 확인 → 필요하면 증설 신청</li><li>스태프 · 매니저 모집</li></ul><span class="ms">11/6 주문제작 발주</span></div>
-    <div class="wk"><div class="dot"></div><div class="t">2주<span>11/9~15</span></div><ul><li>도어락 · 세탁기 · 가구 · 침구솜 발주</li><li>판매 채널 계정 준비</li><li class="me">로고 선택</li></ul></div>
-    <div class="wk key"><div class="dot"></div><div class="t">3주<span>11/16~22</span></div><ul><li>판매 채널 입점 (등록증 필요)</li><li>Wi-Fi · CCTV 설치 · 사인·커피머신 발주</li><li>스태프 · 매니저 확정, 청소 업체 계약</li></ul><span class="ms">11/20 채널 입점</span></div>
-    <div class="wk key"><div class="dot"></div><div class="t">4주<span>11/23~29</span></div><ul><li>배송 · 커튼 · 도어락 설치</li><li>객실 14실 세팅 · 상세페이지 · 요금</li><li class="me">중간 점검 (현장 방문)</li></ul><span class="ms">11/27 객실 세팅 완료</span></div>
-    <div class="wk key"><div class="dot"></div><div class="t">5주<span>11/30~12/6</span></div><ul><li>사진 촬영 → 판매 오픈</li><li>간판 · 층별 사인 설치 · 공용부 세팅</li></ul><span class="ms">12/2 판매 오픈</span></div>
-    <div class="wk"><div class="dot"></div><div class="t">6주<span>12/7~13</span></div><ul><li>스태프 도착 · 교육 · 리허설</li></ul></div>
-    <div class="wk key"><div class="dot"></div><div class="t">7주<span>12/14~20</span></div><ul><li>가오픈 · 문제 바로 보완</li></ul><span class="ms">12/15 가오픈</span></div>
-    <div class="wk"><div class="dot"></div><div class="t">8주<span>12/21~27</span></div><ul><li>크리스마스 · 연말 운영 · 리뷰 30개 목표</li><li class="me">첫 월간 보고 확인</li></ul></div>
+    <div class="price"><span class="v">총매출 10%</span><span class="u">매월 · 최저 150만 원</span></div>
+    <ul class="chk" style="margin-top:6px">
+      <li>날짜별 판매가·객실 관리 (판매채널 전체)</li>
+      <li>예약·문의 응대, 24시간 긴급 연락</li>
+      <li>주 2회 이상 현장 점검, 청소 품질 확인, 비품 보충</li>
+      <li>매월 10일 정산서 · 운영 보고서</li>
+      <li>운영 시스템 (예약 통합·자동 방막기·요금 관리) 포함</li>
+    </ul>
+    <p class="note">예시: 11실·1박 10만 원이면 월 매출 약 2,410만 원, 수수료 약 241만 원. 매출이 적은 달에도 최저 150만 원이에요. 1년 운영해 보고 실적을 보며 같이 조정해요.</p>
   </div>
+
+  <h2>③ 대표님이 부담하시는 것</h2>
+  <div class="card"><ul class="list">
+    <li><div class="ic">₩</div><div><b>운영비</b><small>판매채널·카드 수수료, 청소·세탁, 공과금, 소모품, 보험, 수선 · 거래처에 직접 지급 (청구서는 저희가 확인)</small></div></li>
+    <li><div class="ic">₩</div><div><b>매니저 인건비</b><small>2단계 임시 매니저(최대 3개월), 3단계에서 상시로 정하면 그때부터</small></div></li>
+    <li><div class="ic">✓</div><div><b>호스텔 등록·건물</b><small>관광숙박업 등록증, 보험, 큰 설비 수리</small></div></li>
+  </ul></div>
+
+  <h2>④ 계약</h2>
+  <div class="card"><ul class="chk">
+    <li>운영 기간: 오픈일부터 2년, 이후 1년씩 자동 연장</li>
+    <li>매출은 판매채널에서 <b>대표님 계좌로 바로</b> 들어가요</li>
+    <li>판매채널 계정·후기·사진은 대표님 것</li>
+    <li>매월 15일 수수료 지급, 세금계산서 발행</li>
+    <li>날인: 11/2(월)~11/4(수) 중 편하신 날</li>
+  </ul></div>
 </section>
 
 <!-- ANSWER -->
 <section class="page" id="p-answer">
   <span class="draft">고르고 답변 완료 누르기</span>
   <h1>대표님 답변</h1>
-  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 잘못 누르셨으면 같은 버튼을 한 번 더 누르면 취소돼요. 다 고르시면 맨 아래 <b>답변 완료</b>를 눌러 주세요. 저희에게 바로 전달돼요.</p>
+  <p class="sub">고르신 내용은 이 휴대폰에 저장돼요. 잘못 누르셨으면 같은 버튼을 한 번 더 누르면 취소돼요. 다 고르시면 맨 아래 <b>답변 완료</b>를 눌러 주세요.</p>
 
-  <label class="q">1. 콘셉트</label>
+  <label class="q">1. 11실로 먼저 여는 방식</label>
   <div class="seg" data-k="concept">
-    <button data-v="A안 북한산 베이스캠프">A안</button>
-    <button data-v="B안 수유 1988 레트로">B안</button>
-    <button data-v="섞는 안 (A 기본 + 1층·지하 레트로)">섞는 안</button>
-    <button data-v="새 콘셉트">새 콘셉트</button>
-  </div>
-  <div class="nc" id="nc">
-    <label class="q">떠오르는 분위기 <small>단어 3개면 충분해요</small></label><input type="text" id="nc1" placeholder="예: 따뜻한 · 조용한 · 감성적인">
-    <label class="q">참고 사진·장소 <small>링크나 이름</small></label><input type="text" id="nc2" placeholder="사진은 카톡으로 따로 보내셔도 돼요">
-    <label class="q">받고 싶은 손님</label><input type="text" id="nc3" placeholder="예: 외국인 여행객, 커플, 가족">
-    <label class="q">꼭 넣고 싶은 것 / 피하고 싶은 것</label><input type="text" id="nc4" placeholder="예: 루프탑은 꼭 / 모텔 같은 느낌은 X">
+    <button data-v="[오픈 방식] 11실로 먼저, 단계별로">좋아요</button>
+    <button data-v="[오픈 방식] 만나서 상의">상의 필요</button>
   </div>
 
-  <label class="q">2. 5층 활용</label>
-  <div class="seg three" data-k="f5">
-    <button data-v="제안 1 (객실 2 + 라운지 스태프룸)">제안 1</button>
-    <button data-v="제안 2 (5층 전체 가족·단체실 1실)">제안 2</button>
-    <button data-v="제안 3 (객실 2 + 라운지 손님 공용)">제안 3</button>
-  </div>
-
-  <label class="q">3. 1층·지하를 저희가 같이 운영해도 될까요?</label>
+  <label class="q">2. 오픈 초기 임시 매니저 (최대 3개월)</label>
   <div class="seg" data-k="floor1">
-    <button data-v="네, 같이 운영해 주세요">네</button>
-    <button data-v="만나서 상의해요">상의 필요</button>
+    <button data-v="[임시 매니저] 좋아요">좋아요</button>
+    <button data-v="[임시 매니저] 상의 필요">상의 필요</button>
   </div>
 
-  <label class="q">4. 보내주신 전기 고지서는</label>
-  <div class="seg three" data-k="power">
-    <button data-v="건물 전체 계량기 하나">건물 전체</button>
-    <button data-v="층별로 따로 있음">층별로 따로</button>
-    <button data-v="확인해 볼게요">확인할게요</button>
+  <label class="q">3. 3단계는 지금 생각으로 <small>나중에 바꾸셔도 돼요</small></label>
+  <div class="seg" data-k="f5">
+    <button data-v="[3단계] 기본: 11실 무인">11실 무인</button>
+    <button data-v="[3단계] A: 5·6층 가족실">A · 가족실</button>
+    <button data-v="[3단계] B: 매니저+볼런티어 14실">B · 14실</button>
+    <button data-v="[3단계] 운영해 보고 정할게요">보고 정할게요</button>
   </div>
 
-  <label class="q">5. 집기 예산</label>
+  <label class="q">4. 1단계 집기 약 2,820만 원</label>
+  <div class="seg" data-k="power">
+    <button data-v="[1단계 집기] 이대로 진행">이대로</button>
+    <button data-v="[1단계 집기] 조정 필요">조정 필요</button>
+  </div>
+
+  <label class="q">5. 계약 조건 (오픈 준비 600만 · 운영 10%)</label>
   <div class="seg" data-k="budget">
-    <button data-v="제안 예산으로 진행">제안대로</button>
-    <button data-v="조정이 필요해요">조정 필요</button>
+    <button data-v="[계약 조건] 좋아요">좋아요</button>
+    <button data-v="[계약 조건] 상의 필요">상의 필요</button>
   </div>
 
-  <label class="q">6. 계약 가능한 날짜</label>
-  <input type="date" id="cdate" min="2026-10-27" max="2026-12-31">
+  <label class="q">6. 날인 가능한 날짜</label>
+  <input type="date" id="cdate" min="2026-11-02" max="2026-11-30">
 
   <label class="q">7. 하고 싶으신 말씀 <small>선택</small></label>
   <textarea id="memo" placeholder="궁금한 점, 바꾸고 싶은 점 무엇이든"></textarea>
@@ -361,45 +399,37 @@ textarea{min-height:84px;resize:vertical}
   <p class="foot">누르시면 저희에게 바로 전달돼요. 나중에 바꾸셔도 마지막 답변 기준으로 볼게요.</p>
 </section>
 
-<p class="foot">(주)인장매니지먼트 · 사라스테이 수유 오픈 준비 · 계약 전 초안 (내용은 바뀔 수 있어요)</p>
+<p class="foot">(주)인장매니지먼트 · 사라스테이 수유 최종 제안 (2026.11.1) · 숫자는 추정이며 견적·실적에 따라 바뀔 수 있어요</p>
 </div>
 
 <nav class="nav">
   <button data-p="home" class="on"><i>⌂</i>홈</button>
-  <button data-p="concept"><i>✦</i>콘셉트</button>
-  <button data-p="space"><i>▦</i>공간</button>
-  <button data-p="plan"><i>₩</i>예산·일정</button>
+  <button data-p="step"><i>↗</i>3단계</button>
+  <button data-p="num"><i>₩</i>숫자</button>
+  <button data-p="terms"><i>▤</i>조건</button>
   <button data-p="answer"><i>✎</i>답하기<span class="badge" id="badge"></span></button>
 </nav>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  var KEY='sara_suyu_answers_v1';
+  var KEY='sara_suyu_answers_v2';
   var A={}; try{A=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){A={}}
   function save(){try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){} render()}
   function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove('on')},1600)}
   function go(p){document.querySelectorAll('.page').forEach(function(s){s.classList.toggle('on',s.id==='p-'+p)});document.querySelectorAll('.nav button').forEach(function(b){b.classList.toggle('on',b.dataset.p===p)});window.scrollTo(0,0);history.replaceState(null,'','#'+p)}
   document.querySelectorAll('.nav button').forEach(function(b){b.onclick=function(){go(b.dataset.p)}});
   if(location.hash){var h=location.hash.slice(1);if(document.getElementById('p-'+h))go(h)}
-  // D-day
   var d=Math.ceil((new Date('2026-12-15T00:00:00+09:00')-new Date())/86400000);
-  document.getElementById('dday').textContent=d>0?('가오픈 D-'+d):(d===0?'가오픈 D-DAY':'가오픈 완료');
-  // pick buttons
-  function setv(k,v,label){if(A[k]===v){delete A[k];save();toast('선택을 취소했어요');return false}A[k]=v;save();toast(label||('선택했어요: '+v.split(' (')[0]));return true}
-  document.querySelectorAll('.pick').forEach(function(b){b.onclick=function(){var on=setv(b.dataset.k,b.dataset.v);if(on&&b.dataset.go)go(b.dataset.go)}});
-  document.querySelectorAll('.opt').forEach(function(o){o.querySelector('button').onclick=function(){setv(o.dataset.k,o.dataset.v,'5층: '+o.dataset.v.split(' (')[0]+' 선택')}});
+  document.getElementById('dday').textContent=d>0?('오픈 D-'+d):(d===0?'오픈 D-DAY':'오픈 완료');
   document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(A[sg.dataset.k]===b.dataset.v){delete A[sg.dataset.k];toast('선택을 취소했어요')}else{A[sg.dataset.k]=b.dataset.v}save()}})});
-  document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};document.getElementById('send').textContent='답변 완료';showDone&&setTimeout(showDone,0);['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){document.getElementById(id).value=''});render();toast('모두 지웠어요');window.scrollTo(0,0)};
-  ['nc1','nc2','nc3','nc4','cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
-  var Q=[['concept','콘셉트 선택','A안 / B안 / 섞는 안 / 새 콘셉트'],['f5','5층 활용','제안 1 · 2 · 3 중'],['floor1','1층·지하 운영','저희가 같이 운영해도 될지'],['power','전기 계량기','고지서가 건물 전체인지'],['budget','집기 예산','제안대로 / 조정'],['cdate','계약 가능 날짜','']];
+  document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};document.getElementById('send').textContent='답변 완료';['cdate','memo'].forEach(function(id){document.getElementById(id).value=''});showDone();render();toast('모두 지웠어요');window.scrollTo(0,0)};
+  ['cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
+  var Q=[['concept','11실로 먼저 여는 방식','좋아요 / 상의 필요'],['floor1','임시 매니저','최대 3개월'],['f5','3단계 방향','지금 생각 (나중에 바꿔도 돼요)'],['power','1단계 집기 예산','약 2,820만 원'],['budget','계약 조건','오픈 준비 600만 · 운영 10%'],['cdate','날인 날짜','11/2~11/4 중']];
   function render(){
-    document.querySelectorAll('.pick').forEach(function(b){b.classList.toggle('sel',A[b.dataset.k]===b.dataset.v)});
-    document.querySelectorAll('.opt').forEach(function(o){o.classList.toggle('sel',A[o.dataset.k]===o.dataset.v);o.querySelector('button').textContent=A[o.dataset.k]===o.dataset.v?'✓ 선택했어요 (다시 누르면 취소)':'이렇게 할게요'});
     document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('sel',A[sg.dataset.k]===b.dataset.v)})});
-    document.getElementById('nc').classList.toggle('on',A.concept==='새 콘셉트');
     var ul=document.getElementById('todo'),left=0,h='';
-    Q.forEach(function(q,i){var v=A[q[0]];if(!v)left++;h+='<li><div class="ic'+(v?' ok':'')+'">'+(v?'✓':(i+1))+'</div><div><b>'+q[1]+'</b><small>'+(v?v:q[2])+'</small></div></li>'});
+    Q.forEach(function(q,i){var v=A[q[0]];if(!v)left++;h+='<li><div class="ic'+(v?' ok':'')+'">'+(v?'✓':(i+1))+'</div><div><b>'+q[1]+'</b><small>'+(v?String(v).replace(/^\[[^\]]+\]\s*/,''):q[2])+'</small></div></li>'});
     ul.innerHTML=h+'<li><div style="flex:1"><button class="pick" style="margin-top:4px" onclick="document.querySelector(\'.nav [data-p=answer]\').click()">'+(left?'답하러 가기':(A._sent?'답변 전달 완료 · 다시 보기':'다 고르셨어요 · 답변 완료 누르러 가기'))+'</button></div></li>';
     document.getElementById('leftcnt').textContent=left?('· '+left+'개 남음'):'· 완료';
     var bd=document.getElementById('badge');bd.textContent=left||'';bd.style.display=left?'':'none';
@@ -413,6 +443,7 @@ textarea{min-height:84px;resize:vertical}
     if(miss&&!confirm('아직 안 고르신 게 '+miss+'개 있어요. 지금 고른 것만 먼저 보낼까요?'))return;
     var btn=this;btn.disabled=true;btn.textContent='보내는 중…';
     var d={};['concept','nc1','nc2','nc3','nc4','f5','floor1','power','budget','cdate','memo'].forEach(function(k){d[k]=A[k]||''});
+    d.nc1='[최종 제안 v2]';
     d.ua=(navigator.userAgent||'').slice(0,120);
     fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
       var t=new Date();A._sent=(t.getMonth()+1)+'/'+t.getDate()+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2);
@@ -423,5 +454,4 @@ textarea{min-height:84px;resize:vertical}
   if(A._sent)document.getElementById('send').textContent='답변 다시 보내기';
 })();
 </script>
-</body>
-</html>
+</body></html>
