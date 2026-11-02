@@ -160,7 +160,7 @@ table.t tr.hl td{background:var(--forl);font-weight:800}
     <li><b>11실로 먼저 열어요</b><small>2~4층 11실을 팔 수 있고 무인으로 운영되는 상태까지만 만들어 12/15에 열어요. 5·6층은 자리 잡은 뒤에 해요.</small></li>
     <li><b>사람은 처음에만, 그다음은 같이 정해요</b><small>오픈 초기에만 임시 매니저를 두고, 운영해 보면서 무인으로 갈지 사람을 둘지 정해요.</small></li>
     <li><b>판매가를 서울 호스텔 시세로 다시 잡았어요</b><small>동네 모텔이 아니라 동대문·종로 호스텔과 비교해서 1박 평균 10만 원 기준으로 다시 계산했어요.</small></li>
-    <li><b>계약 조건 최종안을 넣었어요</b><small>오픈 준비 600만 원 · 운영 수수료 총매출 10% (조건 탭)</small></li>
+    <li><b>계약 조건 최종안을 넣었어요</b><small>오픈 준비 600만 원 · 운영 수수료는 정가 15% 대신 <b>특별 조건 두 가지 중 고르실 수 있어요</b> (조건 탭)</small></li>
   </ul></div>
 
   <div class="kpis">
@@ -287,7 +287,7 @@ table.t tr.hl td{background:var(--forl);font-weight:800}
     <li>청소·린넨 외주 퇴실 1건 2.5만 원 <small>장기 외국인 손님(평균 7박)이 30% 섞인다고 보고 계산</small></li>
     <li>전기·가스·수도·통신 월 200만 원</li>
     <li>소모품 1박 2천 원</li>
-    <li>운영 수수료 총매출 10%</li>
+    <li>운영 수수료 옵션 1 (총매출 10%) 기준</li>
     <li>매니저 월 280만 원 · 볼런티어 스태프 1명 월 30만 원 (식비 등) <small>B는 청소를 스태프가 하고 린넨만 외주</small></li>
   </ul></div>
   <p class="note">오픈 후 2~3개월은 리뷰를 쌓으려고 낮은 가격으로 팔 거라 이 숫자보다 적게 나와요. 한 달 이상 묵는 손님은 할인가라 평균 판매가를 조금 낮춰요. 모두 추정이고, 실제 실적으로 매달 보고드릴게요.</p>
@@ -321,15 +321,36 @@ table.t tr.hl td{background:var(--forl);font-weight:800}
 
   <h2>② 운영</h2>
   <div class="card">
-    <div class="price"><span class="v">총매출 10%</span><span class="u">매월 · 최저 150만 원</span></div>
-    <ul class="chk" style="margin-top:6px">
+    <div style="font-size:13px;color:var(--sub);font-weight:700">기본 요금</div>
+    <div style="font-size:16px;font-weight:800;color:#8C9196;text-decoration:line-through">총매출 15% · 월 최저 80만 원</div>
+    <div class="box a" style="margin-top:10px"><b>사라스테이 수유 특별 조건</b><br>저희가 처음 함께하는 호스텔 파트너라서, 기본 요금 대신 아래 두 가지 중 편하신 방식을 고르실 수 있게 했어요. <b>두 방식 모두 월 최저 수수료는 받지 않아요.</b></div>
+
+    <div class="path" style="margin-top:12px">
+      <div class="h"><span class="tag a">옵션 1</span><b>매출형 · 총매출 10%</b></div>
+      <p class="why">기본 15%에서 5%p 낮췄어요. 계산이 단순하고, 장사가 잘될수록 대표님께 유리해요.</p>
+    </div>
+    <div class="path">
+      <div class="h"><span class="tag b">옵션 2</span><b>이익 공유형 · 월 영업이익 30%</b></div>
+      <p class="why">영업이익 = 매출 − 운영비(채널·카드 수수료, 청소·세탁, 공과금, 소모품, 인건비, 수선). 건물 대출 이자와 감가상각은 계산에 넣지 않아요. <b>적자인 달은 수수료 0원</b>이고, 그 적자는 같은 해 다음 달 이익에서 먼저 빼요.</p>
+    </div>
+
+    <div style="font-weight:800;margin:14px 0 6px">두 방식 비교 (월, 11실 기준)</div>
+    <div class="scroll"><table class="t">
+      <thead><tr><th>상황</th><th>옵션 1<br>매출 10%</th><th>옵션 2<br>이익 30%</th></tr></thead>
+      <tbody>
+        <tr><td>오픈 초기 (7만·50%, 임시 매니저)</td><td>117만</td><td>70만</td></tr>
+        <tr><td>보수 (9만·72%)</td><td>217만</td><td>372만</td></tr>
+        <tr class="hl"><td>기준 (10만·72%)</td><td>241만</td><td>434만</td></tr>
+        <tr><td>목표 (11.5만·72%)</td><td>277만</td><td>527만</td></tr>
+      </tbody></table></div>
+    <p class="note">장사가 잘되는 달엔 옵션 1이, 오픈 초기처럼 어려운 달엔 옵션 2가 대표님께 유리해요. 1년 운영해 보고 방식을 바꾸실 수 있어요.</p>
+    <ul class="chk" style="margin-top:8px">
       <li>날짜별 판매가·객실 관리 (판매채널 전체)</li>
       <li>예약·문의 응대, 24시간 긴급 연락</li>
       <li>주 2회 이상 현장 점검, 청소 품질 확인, 비품 보충</li>
       <li>매월 10일 정산서 · 운영 보고서</li>
       <li>운영 시스템 (예약 통합·자동 방막기·요금 관리) 포함</li>
     </ul>
-    <p class="note">예시: 11실·1박 10만 원이면 월 매출 약 2,410만 원, 수수료 약 241만 원. 매출이 적은 달에도 최저 150만 원이에요. 1년 운영해 보고 실적을 보며 같이 조정해요.</p>
   </div>
 
   <h2>③ 대표님이 부담하시는 것</h2>
@@ -381,16 +402,23 @@ table.t tr.hl td{background:var(--forl);font-weight:800}
     <button data-v="[1단계 집기] 조정 필요">조정 필요</button>
   </div>
 
-  <label class="q">5. 계약 조건 (오픈 준비 600만 · 운영 10%)</label>
+  <label class="q">5. 오픈 준비 600만 원</label>
   <div class="seg" data-k="budget">
-    <button data-v="[계약 조건] 좋아요">좋아요</button>
-    <button data-v="[계약 조건] 상의 필요">상의 필요</button>
+    <button data-v="[오픈 준비 600만] 좋아요">좋아요</button>
+    <button data-v="[오픈 준비 600만] 상의 필요">상의 필요</button>
   </div>
 
-  <label class="q">6. 날인 가능한 날짜</label>
+  <label class="q">6. 운영 수수료 방식</label>
+  <div class="seg three" data-k="nc2">
+    <button data-v="[수수료] 옵션 1 매출 10%">매출 10%</button>
+    <button data-v="[수수료] 옵션 2 영업이익 30%">이익 30%</button>
+    <button data-v="[수수료] 상의 필요">상의 필요</button>
+  </div>
+
+  <label class="q">7. 날인 가능한 날짜</label>
   <input type="date" id="cdate" min="2026-11-02" max="2026-11-30">
 
-  <label class="q">7. 하고 싶으신 말씀 <small>선택</small></label>
+  <label class="q">8. 하고 싶으신 말씀 <small>선택</small></label>
   <textarea id="memo" placeholder="궁금한 점, 바꾸고 싶은 점 무엇이든"></textarea>
 
   <div class="box o" id="donebox" style="display:none;text-align:center"><b>✓ 답변이 전달됐어요</b><br><span id="donetime"></span><br>바꾸고 싶으시면 고치신 뒤 다시 눌러 주세요.</div>
@@ -425,7 +453,7 @@ table.t tr.hl td{background:var(--forl);font-weight:800}
   document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(A[sg.dataset.k]===b.dataset.v){delete A[sg.dataset.k];toast('선택을 취소했어요')}else{A[sg.dataset.k]=b.dataset.v}save()}})});
   document.getElementById('reset').onclick=function(){if(!confirm('고르신 내용을 모두 지우고 처음부터 다시 할까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};document.getElementById('send').textContent='답변 완료';['cdate','memo'].forEach(function(id){document.getElementById(id).value=''});showDone();render();toast('모두 지웠어요');window.scrollTo(0,0)};
   ['cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
-  var Q=[['concept','11실로 먼저 여는 방식','좋아요 / 상의 필요'],['floor1','임시 매니저','최대 3개월'],['f5','3단계 방향','지금 생각 (나중에 바꿔도 돼요)'],['power','1단계 집기 예산','약 2,820만 원'],['budget','계약 조건','오픈 준비 600만 · 운영 10%'],['cdate','날인 날짜','11/2~11/4 중']];
+  var Q=[['concept','11실로 먼저 여는 방식','좋아요 / 상의 필요'],['floor1','임시 매니저','최대 3개월'],['f5','3단계 방향','지금 생각 (나중에 바꿔도 돼요)'],['power','1단계 집기 예산','약 2,820만 원'],['budget','오픈 준비','600만 원'],['nc2','운영 수수료 방식','매출 10% 또는 영업이익 30%'],['cdate','날인 날짜','11/2~11/4 중']];
   function render(){
     document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('sel',A[sg.dataset.k]===b.dataset.v)})});
     var ul=document.getElementById('todo'),left=0,h='';
