@@ -126,7 +126,7 @@ function fit(){
   c.querySelector('.row').style.gap='24px';
   s.style.transform=v==='4'?('translateX('+((capH*2.2+24)/2)+'px)'):'none';
   sg.style.transform='none';var w=sg.offsetWidth,h=sg.offsetHeight;
-  var k=Math.min(bx.offsetWidth*0.96/w,bx.offsetHeight*0.92/h);var dx=(v==='4'&&S.place!=='r')?-((capH*2.2+24)/2)*k:0;sg.style.transform='translateX('+dx+'px) scale('+k+')';
+  var k=Math.min(bx.offsetWidth*0.96/w,bx.offsetHeight*0.92/h);var dx=0;sg.style.transform='translateX('+dx+'px) scale('+k+')';
  });
 }
 function render(){
