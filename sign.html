@@ -63,7 +63,7 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
  <button data-c="#9C4A26" data-n="테라코타"><span class="sw" style="background:#9C4A26"></span>테라코타</button>
 </div>
 <h2>2. 북한산 베이스캠프 느낌 넣기</h2>
-<p class="sub" style="margin:-4px 0 10px">산 마크는 북한산의 옛 이름 '삼각산'의 세 봉우리(인수봉·백운대·만경대)를 선으로 그린 거예요.</p>
+<p class="sub" style="margin:-4px 0 10px">산 마크는 북한산의 옛 이름 '삼각산'의 세 봉우리(인수봉·백운대·만경대)를 그린 거예요.</p>
 <div class="seg" id="subs" style="grid-template-columns:1fr 1fr">
  <button data-v="4">왼쪽 봉우리 마크 + 부제</button>
  <button data-v="2">아래 BUKHANSAN BASECAMP</button>
@@ -97,7 +97,7 @@ var box=document.getElementById('opts');
 OPTS.forEach(function(o){
  var c=document.createElement('div');c.className='card';c.dataset.k=o.k;
  c.innerHTML='<div class="scene"><div class="stage"><img src="facade_real.jpg" alt=""><div class="band"><div class="box">'+
- '<div class="sign"><span class="mk"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"4.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="row"><span class="ic"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"4.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="m">'+o.t+'</span></span><span class="s">SUYU</span></div>'+'</div></div></div><span class="ai">합성 시안</span></div>'+
+ '<div class="sign"><span class="mk"><svg viewBox=\"0 0 120 64\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M2 62 L16 44 C20 30 28 24 35 25 C40 26 43 29 45 32 L60 5 L75 28 L81 23 L96 40 L102 36 L118 62 Z M52.5 19 L56.5 23.5 L60.5 19.5 L64.5 23.5 L68 19.5 L66.2 16.8 L64.5 19 L60.5 15 L56.5 19 L54.3 16.4 Z\"/></svg></span><span class="row"><span class="ic"><svg viewBox=\"0 0 120 64\"><path fill=\"currentColor\" fill-rule=\"evenodd\" d=\"M2 62 L16 44 C20 30 28 24 35 25 C40 26 43 29 45 32 L60 5 L75 28 L81 23 L96 40 L102 36 L118 62 Z M52.5 19 L56.5 23.5 L60.5 19.5 L64.5 23.5 L68 19.5 L66.2 16.8 L64.5 19 L60.5 15 L56.5 19 L54.3 16.4 Z\"/></svg></span><span class="m">'+o.t+'</span></span><span class="s">SUYU</span></div>'+'</div></div></div><span class="ai">합성 시안</span></div>'+
  '<div class="meta"><b>'+o.k+'. '+o.n+'</b><p>'+o.d+'</p><button>이 글씨로 할게요</button></div>';
  box.appendChild(c);
  c.querySelector('button').onclick=function(){S.font=(S.font===o.k)?null:o.k;save();render();toast(S.font?o.n+' 선택':'선택을 취소했어요')};
@@ -122,11 +122,11 @@ function fit(){
   s.textContent=subT;s.style.display=subT?'block':'none';s.style.fontSize=(subT.length>6?22:28)+'px';s.style.letterSpacing=(subT.length>6?'.42em':'.55em');s.style.paddingLeft=s.style.letterSpacing;s.style.marginTop=(o.k==='5'?'26px':'14px');
   mk.style.display=v==='3'?'block':'none';ic.style.display=v==='4'?'block':'none';
   var ms=mk.querySelector('svg');ms.style.width='170px';ms.style.height='46px';mk.style.marginBottom='8px';
-  var is=ic.querySelector('svg');is.style.width=(capH*2.1)+'px';is.style.height=(capH*0.6+10)+'px';
-  c.querySelector('.row').style.gap='18px';
-  s.style.transform=v==='4'?('translateX('+((capH*2.1+18)/2)+'px)'):'none';
+  var is=ic.querySelector('svg');is.style.width=(capH*2.2)+'px';is.style.height=(capH*1.17)+'px';
+  c.querySelector('.row').style.gap='24px';
+  s.style.transform=v==='4'?('translateX('+((capH*2.2+24)/2)+'px)'):'none';
   sg.style.transform='none';var w=sg.offsetWidth,h=sg.offsetHeight;
-  var k=Math.min(bx.offsetWidth*0.96/w,bx.offsetHeight*0.92/h);var dx=(v==='4'&&S.place!=='r')?-((capH*2.1+18)/2)*k:0;sg.style.transform='translateX('+dx+'px) scale('+k+')';
+  var k=Math.min(bx.offsetWidth*0.96/w,bx.offsetHeight*0.92/h);var dx=(v==='4'&&S.place!=='r')?-((capH*2.2+24)/2)*k:0;sg.style.transform='translateX('+dx+'px) scale('+k+')';
  });
 }
 function render(){
