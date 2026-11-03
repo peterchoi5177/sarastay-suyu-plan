@@ -51,6 +51,25 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
 .done{display:none;margin-top:12px;background:var(--accl);border-radius:12px;padding:12px;text-align:center;font-size:14px}
 .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-size:14px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}
 .toast.on{opacity:1}
+.ghost{width:100%;margin-top:10px;padding:13px;border-radius:12px;background:#fff;border:1.5px solid var(--line);font-weight:700;font-size:15px;color:var(--ink);font-family:inherit}
+.pbox{margin-top:14px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px}
+pre#pmsg{white-space:pre-wrap;font-family:inherit;font-size:14px;background:var(--bg);border-radius:10px;padding:12px;margin:10px 0;line-height:1.6}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.btn{padding:13px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:15px;font-family:inherit;color:var(--ink)}
+.btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+.dl{display:grid;gap:8px}
+.dl a{display:flex;justify-content:space-between;align-items:center;padding:13px 14px;border-radius:10px;background:#fff;border:1.5px solid var(--line);text-decoration:none;color:var(--ink);font-weight:700;font-size:14.5px}
+.dl a small{font-weight:500;color:var(--sub);font-size:12px}
+.dl a.wait{opacity:.5;pointer-events:none}
+.art{background:#EFE9DC;border-radius:16px;padding:22px;margin:14px 0;display:flex;justify-content:center}
+.art img{max-width:100%;height:auto}
+.pcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+.spec{list-style:none}.spec li{padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}.spec li:last-child{border:none}.spec li{display:grid;grid-template-columns:60px 1fr;gap:8px}.spec b{color:var(--sub);font-weight:700}
+.sw2{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:4px}
+body.pm .wrap>*:not(#pv):not(#fullwrap){display:none!important}
+body.pm #fullwrap .sub{display:none}
+body.pm .wrap{display:flex;flex-direction:column}
+body.pm #pv{order:-1}
 .foot{font-size:12px;color:var(--sub);text-align:center;margin-top:20px}
 </style></head><body>
 <div class="top">SARA STAY<span>간판 글씨 고르기</span></div>
@@ -59,9 +78,9 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
 <h1>건물에 칠할 영문 이름,<br>어떤 글씨가 좋으세요?</h1>
 <p class="sub" style="margin-top:6px">주차장 바로 위 띠, 벽등 2개 사이에 페인트로 쓰는 방식이에요. 아래는 11/3 현장 사진(벽등 2개 설치된 모습)에 실제 글씨체를 얹어 본 거예요.</p>
 
-<h2>전체 건물로 보기</h2>
+<div id="fullwrap"><h2>전체 건물로 보기</h2>
 <p class="sub" style="margin:-4px 0 10px">아래에서 고르신 색·글씨체로 바로 바뀌어요 (글씨체를 안 고르셨으면 6번으로 보여요).</p>
-<div id="full"></div>
+<div id="full"></div></div>
 
 <h2>1. 글씨 색</h2>
 <div class="seg" id="colors">
@@ -85,20 +104,41 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
 <textarea id="memo" placeholder="예: 2번인데 조금 더 크게, 한글도 같이 등"></textarea>
 <button class="send" id="send">이걸로 할게요</button>
 <div class="done" id="done"></div>
+<button class="ghost" id="openPaint">페인트 업체에 보낼 안내 보기</button>
+<div id="paint" class="pbox" style="display:none">
+ <h2 style="margin-top:4px">페인트 업체에 보낼 메시지</h2>
+ <p class="sub">아래 내용을 복사하거나 카톡으로 보내시면 돼요. 링크에서 업체가 도안 파일을 바로 받을 수 있어요.</p>
+ <pre id="pmsg"></pre>
+ <div class="two"><button class="btn" id="pcopy">메시지 복사</button><button class="btn dark" id="pshare">카톡 등으로 보내기</button></div>
+ <h2>도안 파일</h2>
+ <div class="dl" id="dlbox"></div>
+</div>
+<div id="pv" style="display:none">
+ <span class="draft">도장 도안</span>
+ <h1>사라스테이 외벽 글씨<br>도장 안내</h1>
+ <p class="sub" style="margin-top:6px">건물주님이 고른 시안이에요. 아래 내용대로 칠해 주시면 됩니다.</p>
+ <div class="art" id="art"></div>
+ <div class="pcard"><ul class="spec" id="spec"></ul></div>
+ <h2>도안 파일 내려받기</h2>
+ <div class="dl" id="dlbox2"></div>
+</div>
 <p class="foot">(주)인장매니지먼트 · 사라스테이 수유 · 시안은 참고용이에요. 실제 크기와 위치는 현장에서 맞춰요.</p>
 </div>
 <div class="toast" id="toast"></div>
 <script>
 var OPTS=[
- {k:'1',n:'모던 고딕',d:'굵고 반듯해요. 멀리서도 잘 읽히는 기본형',f:"'Montserrat',sans-serif",w:700,ls:'.12em',t:'SARA STAY'},
- {k:'2',n:'얇고 세련된',d:'가늘고 넓게 띄워 부티크 호텔 느낌',f:"'Josefin Sans',sans-serif",w:400,ls:'.38em',t:'SARA STAY'},
- {k:'3',n:'클래식 세리프',d:'고급스럽고 차분한 느낌',f:"'DM Serif Display',serif",w:400,ls:'.06em',t:'SARA STAY'},
- {k:'4',n:'아웃도어 스텐실',d:'등산 장비·캠핑 느낌, 베이스캠프 콘셉트와 잘 맞아요',f:"'Big Shoulders Stencil Display',sans-serif",w:800,ls:'.14em',t:'SARA STAY'},
- {k:'5',n:'손글씨 사인',d:'페인트로 직접 쓴 듯한 따뜻한 느낌',f:"'Yellowtail',cursive",w:400,ls:'0',t:'Sara Stay'},
- {k:'6',n:'빈티지 슬랩',d:'오래된 가게 간판 같은 단단한 느낌',f:"'Zilla Slab',serif",w:700,ls:'.08em',t:'SARA STAY'}];
+ {k:'1',fs:'montserrat',fw:700,fn:'Montserrat Bold',gf:'Montserrat',n:'모던 고딕',d:'굵고 반듯해요. 멀리서도 잘 읽히는 기본형',f:"'Montserrat',sans-serif",w:700,ls:'.12em',t:'SARA STAY'},
+ {k:'2',fs:'josefin-sans',fw:400,fn:'Josefin Sans Regular',gf:'Josefin+Sans',n:'얇고 세련된',d:'가늘고 넓게 띄워 부티크 호텔 느낌',f:"'Josefin Sans',sans-serif",w:400,ls:'.38em',t:'SARA STAY'},
+ {k:'3',fs:'dm-serif-display',fw:400,fn:'DM Serif Display',gf:'DM+Serif+Display',n:'클래식 세리프',d:'고급스럽고 차분한 느낌',f:"'DM Serif Display',serif",w:400,ls:'.06em',t:'SARA STAY'},
+ {k:'4',fs:'big-shoulders-stencil-display',fw:800,fn:'Big Shoulders Stencil Display ExtraBold',gf:'Big+Shoulders+Stencil+Display',n:'아웃도어 스텐실',d:'등산 장비·캠핑 느낌, 베이스캠프 콘셉트와 잘 맞아요',f:"'Big Shoulders Stencil Display',sans-serif",w:800,ls:'.14em',t:'SARA STAY'},
+ {k:'5',fs:'yellowtail',fw:400,fn:'Yellowtail',gf:'Yellowtail',n:'손글씨 사인',d:'페인트로 직접 쓴 듯한 따뜻한 느낌',f:"'Yellowtail',cursive",w:400,ls:'0',t:'Sara Stay'},
+ {k:'6',fs:'zilla-slab',fw:700,fn:'Zilla Slab Bold',gf:'Zilla+Slab',n:'빈티지 슬랩',d:'오래된 가게 간판 같은 단단한 느낌',f:"'Zilla Slab',serif",w:700,ls:'.08em',t:'SARA STAY'}];
 var S={color:'#2F4A3A',cname:'숲 초록',sub:'4',place:'c',font:null};
 try{var sv=JSON.parse(localStorage.getItem('sara_sign_v3')||'{}');for(var k in sv)S[k]=sv[k]}catch(e){}
 if(S.sub==='3')S.sub='4';S.place='c';
+var QS=new URLSearchParams(location.search),PM=QS.get('paint')==='1';
+var CN={'2F4A3A':'숲 초록','22262A':'차콜','9C4A26':'테라코타'};
+if(PM){S.font=QS.get('f')||'6';var cc=(QS.get('c')||'2F4A3A').toUpperCase();S.color='#'+cc;S.cname=CN[cc]||('#'+cc);S.sub=QS.get('s')||'4';document.body.classList.add('pm');document.getElementById('pv').style.display='block';}
 function save(){try{localStorage.setItem('sara_sign_v3',JSON.stringify(S))}catch(e){}}
 var box=document.getElementById('opts');
 OPTS.forEach(function(o){
@@ -162,7 +202,60 @@ document.getElementById('send').onclick=function(){
  var memo=document.getElementById('memo').value;
  var d={concept:'[간판 글씨] '+o.k+'. '+o.n,f5:'[간판 색] '+S.cname,floor1:'[베이스캠프 요소] '+SUBN[S.sub],memo:memo?('[간판 메모] '+memo):'',ua:'sign-page'};
  fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
-  btn.disabled=false;btn.textContent='다시 보내기';var e=document.getElementById('done');e.style.display='block';e.innerHTML='<b>✓ 전달됐어요</b><br>'+o.n+' · '+S.cname+' · '+SUBN[S.sub];toast('전달됐어요. 감사합니다!')
+  btn.disabled=false;btn.textContent='다시 보내기';var e=document.getElementById('done');e.style.display='block';e.innerHTML='<b>✓ 전달됐어요</b><br>'+o.n+' · '+S.cname+' · '+SUBN[S.sub];toast('전달됐어요. 감사합니다!');setTimeout(showPaint,600)
  }).catch(function(){btn.disabled=false;btn.textContent='이걸로 할게요';alert('인터넷 연결을 확인하고 다시 눌러 주세요')});
 };
+
+var MARKD='M2 62 L16 44 C20 30 28 24 35 25 C40 26 43 29 45 32 L60 5 L75 28 L81 23 L96 40 L102 36 L118 62 Z M52.5 19 L56.5 23.5 L60.5 19.5 L64.5 23.5 L68 19.5 L66.2 16.8 L64.5 19 L60.5 15 L56.5 19 L54.3 16.4 Z';
+var SUBT={'1':'SUYU','2':'BUKHANSAN BASECAMP','4':'BUKHANSAN BASECAMP'};
+var otLoad=null,FONTC={};
+function loadOT(){if(otLoad)return otLoad;otLoad=new Promise(function(res,rej){var sc=document.createElement('script');sc.src='https://cdn.jsdelivr.net/npm/opentype.js@1.3.4/dist/opentype.min.js';sc.onload=res;sc.onerror=rej;document.head.appendChild(sc)});return otLoad}
+function getFont(id,w){var k=id+w;if(FONTC[k])return FONTC[k];FONTC[k]=fetch('https://cdn.jsdelivr.net/fontsource/fonts/'+id+'@latest/latin-'+w+'-normal.woff').then(function(r){return r.arrayBuffer()}).then(function(b){return opentype.parse(b)});return FONTC[k]}
+function textPath(font,str,size,lsEm,x0,base){var d='',x=x0,sc=size/font.unitsPerEm,gl=font.stringToGlyphs(str);for(var i=0;i<gl.length;i++){var g=gl[i];d+=g.getPath(x,base,size).toPathData(2);x+=g.advanceWidth*sc+lsEm*size;if(i<gl.length-1)x+=font.getKerningValue(g,gl[i+1])*sc}return {d:d,w:x-x0-lsEm*size}}
+function bbox(font,str,size,lsEm,x0,base){var p=new opentype.Path(),x=x0,sc=size/font.unitsPerEm,gl=font.stringToGlyphs(str);var mn=[1e9,1e9],mx=[-1e9,-1e9];for(var i=0;i<gl.length;i++){var b=gl[i].getPath(x,base,size).getBoundingBox();if(isFinite(b.x1)){mn[0]=Math.min(mn[0],b.x1);mn[1]=Math.min(mn[1],b.y1);mx[0]=Math.max(mx[0],b.x2);mx[1]=Math.max(mx[1],b.y2)}x+=gl[i].advanceWidth*sc+lsEm*size;if(i<gl.length-1)x+=font.getKerningValue(gl[i],gl[i+1])*sc}return {x1:mn[0],y1:mn[1],x2:mx[0],y2:mx[1]}}
+function buildArt(withText){
+ var o=OPTS.filter(function(x){return x.k===(S.font||'6')})[0],col=S.color,v=S.sub;
+ return loadOT().then(function(){return Promise.all([getFont(o.fs,o.fw),getFont('montserrat',700)])}).then(function(F){
+  var f=F[0],fm=F[1],size=100,ls=parseFloat(o.ls)||0;
+  var nb=bbox(f,o.t,size,ls,0,0),parts=[],X=[],Y=[];
+  var capH=nb.y2-nb.y1,nameW=nb.x2-nb.x1;
+  var mx0=0,nameX=0;
+  if(v==='4'){var mh=capH*1.17,mw=mh*120/64,gap=capH*0.33;var sc=mh/64,my=(nb.y1+nb.y2)/2-mh/2;parts.push('<path transform="translate(0 '+my.toFixed(2)+') scale('+sc.toFixed(4)+')" fill-rule="evenodd" d="'+MARKD+'"/>');X.push(0,mw);Y.push(my,my+mh);nameX=mw+gap-nb.x1}
+  else nameX=-nb.x1;
+  var tp=textPath(f,o.t,size,ls,nameX,0);parts.push('<path d="'+tp.d+'"/>');X.push(nameX+nb.x1,nameX+nb.x2);Y.push(nb.y1,nb.y2);
+  var st=SUBT[v];if(st){var ss=st.length>6?22:28,sl=st.length>6?0.42:0.55;var sb=bbox(fm,st,ss,sl,0,0);var cx=nameX+(nb.x1+nb.x2)/2;var sx=cx-(sb.x2+sb.x1)/2;var sy=nb.y2+(o.k==='5'?40:30)-sb.y1;var sp=textPath(fm,st,ss,sl,sx,sy);parts.push('<path d="'+sp.d+'"/>');X.push(sx+sb.x1,sx+sb.x2);Y.push(sy+sb.y1,sy+sb.y2)}
+  var x1=Math.min.apply(0,X),x2=Math.max.apply(0,X),y1=Math.min.apply(0,Y),y2=Math.max.apply(0,Y),m=(y2-y1)*0.12;
+  var vb=[(x1-m).toFixed(1),(y1-m).toFixed(1),(x2-x1+2*m).toFixed(1),(y2-y1+2*m).toFixed(1)];
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="'+vb.join(' ')+'" width="'+vb[2]+'" height="'+vb[3]+'"><g fill="'+col+'">'+parts.join('')+'</g></svg>';
+ });
+}
+function markSVG(){return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -4 128 72" width="1280" height="720"><path fill="'+S.color+'" fill-rule="evenodd" d="'+MARKD+'"/></svg>'}
+function toPNG(svg,W){return new Promise(function(res){var img=new Image();var u=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));img.onload=function(){var r=img.height/img.width;var c=document.createElement('canvas');c.width=W;c.height=Math.round(W*r);c.getContext('2d').drawImage(img,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(function(b){res(URL.createObjectURL(b))},'image/png')};img.src=u})}
+function fname(){var o=OPTS.filter(function(x){return x.k===(S.font||'6')})[0];return 'SARASTAY_간판도안_'+o.n.replace(/ /g,'')+'_'+S.cname.replace(/ /g,'')}
+function fillDL(box){
+ box.innerHTML='<a class="wait">도안 만드는 중…</a>';
+ buildArt().then(function(svg){
+  var su=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));
+  var art=document.getElementById('art');if(art)art.innerHTML='<img src="'+su+'" alt="">';
+  return Promise.all([toPNG(svg,4000),toPNG(markSVG(),2000)]).then(function(r){
+   var mu=URL.createObjectURL(new Blob([markSVG()],{type:'image/svg+xml'}));
+   var h='<a href="'+su+'" download="'+fname()+'.svg">간판 도안 (SVG) <small>글자 윤곽선 · 크기 키워도 안 깨짐 · 시트 커팅용</small></a>'+
+   '<a href="'+r[0]+'" download="'+fname()+'.png">간판 도안 (PNG) <small>투명 배경 · 가로 4000px</small></a>';
+   if(S.sub==='4')h+='<a href="'+mu+'" download="SARASTAY_북한산로고.svg">북한산 로고 (SVG) <small>로고만</small></a><a href="'+r[1]+'" download="SARASTAY_북한산로고.png">북한산 로고 (PNG) <small>투명 배경 · 가로 2000px</small></a>';
+   box.innerHTML=h;
+  });
+ }).catch(function(){box.innerHTML='<a class="wait">도안을 만들지 못했어요. 인터넷 연결 후 새로고침해 주세요</a>'});
+}
+function rgb(h){h=h.replace('#','');return [0,2,4].map(function(i){return parseInt(h.substr(i,2),16)}).join(', ')}
+function paintLink(){return location.origin+location.pathname+'?paint=1&f='+(S.font||'6')+'&c='+S.color.replace('#','')+'&s='+S.sub}
+function specLines(){var o=OPTS.filter(function(x){return x.k===(S.font||'6')})[0];var st=SUBT[S.sub];
+ var what=(S.sub==='4'?'북한산 봉우리 마크 + ':'')+(o.t)+(st?(' / 아래 작은 글씨 '+st):'');
+ return {pos:'1층 주차장 바로 위 띠, 벽등 2개 정중앙에 맞춰서',what:what,font:o.fn+' (구글 무료 글꼴) https://fonts.google.com/specimen/'+o.gf,color:S.cname+' '+S.color.toUpperCase()+' (RGB '+rgb(S.color)+')',paint:'외부용 수성 페인트, 가장 가까운 색으로 조색 · 무광 또는 저광',size:'시안 그림 비율대로, 현장에서 띠 크기 실측 후 맞춰 주세요'}}
+function painterMsg(){var L=specLines();return '[사라스테이 외벽 글씨 도장 요청]\n· 위치: '+L.pos+'\n· 내용: '+L.what+'\n· 글씨체: '+L.font+'\n· 색상: '+L.color+'\n· 페인트: '+L.paint+'\n· 크기: '+L.size+'\n· 도안·시안: '+paintLink()+'\n  (링크에서 도안 파일 SVG·PNG를 바로 받을 수 있어요)'}
+function showPaint(){if(!S.font){alert('글씨체를 먼저 골라 주세요');return}var p=document.getElementById('paint');p.style.display='block';document.getElementById('pmsg').textContent=painterMsg();fillDL(document.getElementById('dlbox'));p.scrollIntoView({behavior:'smooth',block:'start'})}
+document.getElementById('openPaint').onclick=showPaint;
+document.getElementById('pcopy').onclick=function(){var t=painterMsg();(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('복사했어요')}).catch(function(){prompt('아래 내용을 복사해 주세요',t)})};
+document.getElementById('pshare').onclick=function(){var t=painterMsg();if(navigator.share)navigator.share({text:t}).catch(function(){});else{(navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){toast('복사했어요. 카톡에 붙여 넣어 주세요')}).catch(function(){prompt('아래 내용을 복사해 주세요',t)})}};
+if(PM){document.querySelector('#fullwrap h2').textContent='건물에 칠했을 때 모습 (위치 참고)';document.querySelector('.top span').textContent='외벽 글씨 도장 안내';var L=specLines();document.getElementById('spec').innerHTML='<li><b>위치</b><span>'+L.pos+'</span></li><li><b>내용</b><span>'+L.what+'</span></li><li><b>글씨체</b><span>'+L.font.split(' https')[0]+' · <a href="https://fonts.google.com/specimen/'+OPTS.filter(function(x){return x.k===S.font})[0].gf+'" target="_blank">글꼴 받기</a></span></li><li><b>색상</b><span><span class="sw2" style="background:'+S.color+'"></span>'+L.color+'</span></li><li><b>페인트</b><span>'+L.paint+'</span></li><li><b>크기</b><span>'+L.size+'</span></li>';
+ (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){fillDL(document.getElementById('dlbox2'))});}
 </script></body></html>
