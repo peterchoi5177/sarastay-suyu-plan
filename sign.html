@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>사라스테이 간판 글씨 고르기</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Josefin+Sans:wght@400&family=DM+Serif+Display&family=Big+Shoulders+Stencil+Display:wght@800&family=Yellowtail&family=Zilla+Slab:wght@700&display=block" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#1F2A24;--sub:#5E6660;--line:#E4E2DC;--bg:#F5F3EE;--acc:#E0702B;--accl:#FCE9DC}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Pretendard,-apple-system,sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;padding-bottom:40px}
+.top{position:sticky;top:0;z-index:5;background:var(--ink);color:#fff;padding:12px 18px;font-weight:800}
+.top span{color:#F3B48A;font-weight:600;font-size:13px;margin-left:6px}
+.wrap{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:22px;font-weight:800;line-height:1.3}
+h2{font-size:17px;font-weight:800;margin:24px 0 10px}
+.sub{color:var(--sub);font-size:14px}
+.draft{display:inline-block;font-size:12px;font-weight:700;color:var(--acc);background:var(--accl);padding:3px 9px;border-radius:99px;margin-bottom:8px}
+.seg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.seg button{padding:11px 6px;border-radius:10px;background:#fff;border:2px solid var(--line);font-weight:700;font-size:14px;color:var(--ink);font-family:inherit;display:flex;align-items:center;justify-content:center;gap:6px}
+.seg button.sel{border-color:var(--acc);background:var(--accl)}
+.sw{width:14px;height:14px;border-radius:50%;display:inline-block}
+.card{background:#fff;border:2px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:14px}
+.card.sel{border-color:var(--acc)}
+.card .meta{padding:12px 14px}
+.card .meta b{font-size:16px}
+.card .meta p{font-size:13.5px;color:var(--sub);margin-top:2px}
+.card button{margin-top:10px;width:100%;padding:11px;border-radius:10px;border:none;background:var(--ink);color:#fff;font-weight:700;font-size:15px;font-family:inherit}
+.card.sel button{background:var(--acc)}
+.scene{position:relative;width:100%;aspect-ratio:820/290;overflow:hidden;background:#222}
+.stage{position:absolute;left:0;top:0;width:1024px;height:400px;transform-origin:0 0}
+.stage img{position:absolute;left:0;top:0;width:1024px;height:400px}
+.sign{position:absolute;left:575px;top:236px;transform:translate(-50%,-50%) rotate(3.6deg);text-align:center;white-space:nowrap}
+.sign .m{display:block;line-height:1;mix-blend-mode:multiply;opacity:.93}
+.sign .s{display:block;font-family:Montserrat,sans-serif;font-weight:700;font-size:13px;letter-spacing:.55em;margin-top:7px;padding-left:.55em;mix-blend-mode:multiply;opacity:.85}
+.glow{position:absolute;width:150px;height:110px;border-radius:50%;background:radial-gradient(closest-side,rgba(255,214,150,.55),rgba(255,214,150,0));mix-blend-mode:screen;transform:translate(-50%,0) rotate(3.6deg)}
+.lamp{position:absolute;width:2px;height:12px;background:#1d1d1d}
+.lamp:after{content:"";position:absolute;left:-6px;top:10px;width:13px;height:9px;background:#1d1d1d;border-radius:6px 6px 2px 2px}
+.ai{position:absolute;right:8px;bottom:6px;font-size:10.5px;color:#fff;background:#0007;padding:2px 7px;border-radius:99px}
+textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px solid var(--line);border-radius:10px;min-height:70px;margin-top:8px}
+.send{width:100%;margin-top:20px;padding:16px;border-radius:14px;border:none;font-size:17px;font-weight:800;background:var(--acc);color:#fff;font-family:inherit}
+.send:disabled{opacity:.6}
+.done{display:none;margin-top:12px;background:var(--accl);border-radius:12px;padding:12px;text-align:center;font-size:14px}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 16px;border-radius:99px;font-size:14px;font-weight:700;opacity:0;transition:.25s;pointer-events:none}
+.toast.on{opacity:1}
+.foot{font-size:12px;color:var(--sub);text-align:center;margin-top:20px}
+</style></head><body>
+<div class="top">SARA STAY<span>간판 글씨 고르기</span></div>
+<div class="wrap">
+<span class="draft">제안 · 고르시면 바로 전달돼요</span>
+<h1>건물에 칠할 영문 이름,<br>어떤 글씨가 좋으세요?</h1>
+<p class="sub" style="margin-top:6px">주차장 위 띠에 페인트로 쓰고, 위에서 작은 조명 3개로 비추는 방식이에요. 아래 사진은 실제 글씨체를 건물 사진 위에 얹어 본 모습이에요.</p>
+
+<h2>1. 글씨 색</h2>
+<div class="seg" id="colors">
+ <button data-c="#2F4A3A" data-n="숲 초록"><span class="sw" style="background:#2F4A3A"></span>숲 초록</button>
+ <button data-c="#22262A" data-n="차콜"><span class="sw" style="background:#22262A"></span>차콜</button>
+ <button data-c="#9C4A26" data-n="테라코타"><span class="sw" style="background:#9C4A26"></span>테라코타</button>
+</div>
+<h2>2. 작은 글씨 "SUYU"</h2>
+<div class="seg" id="subs" style="grid-template-columns:1fr 1fr">
+ <button data-v="1">아래에 넣기</button><button data-v="0">이름만</button>
+</div>
+
+<h2>3. 글씨체</h2>
+<div id="opts"></div>
+
+<h2>하고 싶으신 말씀 <span class="sub" style="font-weight:500">선택</span></h2>
+<textarea id="memo" placeholder="예: 2번인데 조금 더 크게, 한글도 같이 등"></textarea>
+<button class="send" id="send">이걸로 할게요</button>
+<div class="done" id="done"></div>
+<p class="foot">(주)인장매니지먼트 · 사라스테이 수유 · 시안은 참고용이에요. 실제 크기와 위치는 현장에서 맞춰요.</p>
+</div>
+<div class="toast" id="toast"></div>
+<script>
+var OPTS=[
+ {k:'1',n:'모던 고딕',d:'굵고 반듯해요. 멀리서도 잘 읽히는 기본형',f:"'Montserrat',sans-serif",w:700,ls:'.12em',t:'SARA STAY'},
+ {k:'2',n:'얇고 세련된',d:'가늘고 넓게 띄워 부티크 호텔 느낌',f:"'Josefin Sans',sans-serif",w:400,ls:'.38em',t:'SARA STAY'},
+ {k:'3',n:'클래식 세리프',d:'고급스럽고 차분한 느낌',f:"'DM Serif Display',serif",w:400,ls:'.06em',t:'SARA STAY'},
+ {k:'4',n:'아웃도어 스텐실',d:'등산 장비·캠핑 느낌, 베이스캠프 콘셉트와 잘 맞아요',f:"'Big Shoulders Stencil Display',sans-serif",w:800,ls:'.14em',t:'SARA STAY'},
+ {k:'5',n:'손글씨 사인',d:'페인트로 직접 쓴 듯한 따뜻한 느낌',f:"'Yellowtail',cursive",w:400,ls:'0',t:'Sara Stay'},
+ {k:'6',n:'빈티지 슬랩',d:'오래된 가게 간판 같은 단단한 느낌',f:"'Zilla Slab',serif",w:700,ls:'.08em',t:'SARA STAY'}];
+var S={color:'#2F4A3A',cname:'숲 초록',sub:'1',font:null};
+try{var sv=JSON.parse(localStorage.getItem('sara_sign_v1')||'{}');for(var k in sv)S[k]=sv[k]}catch(e){}
+function save(){try{localStorage.setItem('sara_sign_v1',JSON.stringify(S))}catch(e){}}
+var box=document.getElementById('opts');
+OPTS.forEach(function(o){
+ var c=document.createElement('div');c.className='card';c.dataset.k=o.k;
+ c.innerHTML='<div class="scene"><div class="stage"><img src="facade.jpg" alt="">'+
+ [470,575,680].map(function(x){var y=137+0.088*(x-95);return '<div class="glow" style="left:'+x+'px;top:'+(y)+'px"></div><div class="lamp" style="left:'+x+'px;top:'+(y-9)+'px"></div>'}).join('')+
+ '<div class="sign"><span class="m">'+o.t+'</span><span class="s">SUYU</span></div></div><span class="ai">합성 시안</span></div>'+
+ '<div class="meta"><b>'+o.k+'. '+o.n+'</b><p>'+o.d+'</p><button>이 글씨로 할게요</button></div>';
+ box.appendChild(c);
+ c.querySelector('button').onclick=function(){S.font=(S.font===o.k)?null:o.k;save();render();toast(S.font?o.n+' 선택':'선택을 취소했어요')};
+});
+function fit(){
+ document.querySelectorAll('.card').forEach(function(c){
+  var o=OPTS.filter(function(x){return x.k===c.dataset.k})[0];
+  var sc=c.querySelector('.scene'),st=c.querySelector('.stage');st.style.transform='scale('+(sc.clientWidth/820)+') translate(-160px,-70px)';
+  var m=c.querySelector('.m'),s=c.querySelector('.s');
+  m.style.fontFamily=o.f;m.style.fontWeight=o.w;m.style.letterSpacing=o.ls;m.style.paddingLeft=o.ls;m.style.color=S.color;s.style.color=S.color;
+  s.style.display=S.sub==='1'?'block':'none';s.style.marginTop=o.k==='5'?'16px':'7px';
+  m.style.fontSize='100px';var w=m.getBoundingClientRect().width/(sc.clientWidth/1024)||m.offsetWidth;
+  var target=o.k==='2'?460:(o.k==='5'?380:410);var fs=100*target/m.offsetWidth;
+  var maxH=S.sub==='1'?(o.k==='5'?62:50):(o.k==='5'?74:60);fs=Math.min(fs,maxH/0.72);m.style.fontSize=fs+'px';
+ });
+}
+function render(){
+ document.querySelectorAll('#colors button').forEach(function(b){b.classList.toggle('sel',b.dataset.c===S.color)});
+ document.querySelectorAll('#subs button').forEach(function(b){b.classList.toggle('sel',b.dataset.v===S.sub)});
+ document.querySelectorAll('.card').forEach(function(c){var on=c.dataset.k===S.font;c.classList.toggle('sel',on);c.querySelector('button').textContent=on?'✓ 선택했어요 (다시 누르면 취소)':'이 글씨로 할게요'});
+ fit();
+}
+document.querySelectorAll('#colors button').forEach(function(b){b.onclick=function(){S.color=b.dataset.c;S.cname=b.dataset.n;save();render()}});
+document.querySelectorAll('#subs button').forEach(function(b){b.onclick=function(){S.sub=b.dataset.v;save();render()}});
+window.addEventListener('resize',fit);
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){render();window.__ready=1});
+render();
+function toast(t){var e=document.getElementById('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(function(){e.classList.remove('on')},1500)}
+var URL_='https://script.google.com/macros/s/AKfycbxxddfsFK8R584qflq9rOtm8kD4Y6Kd_nQgxS3VoQ97BN5aRsysSjzEtl3ow4PNwwFNqw/exec';
+document.getElementById('send').onclick=function(){
+ if(!S.font){alert('글씨체를 하나 골라 주세요');return}
+ var o=OPTS.filter(function(x){return x.k===S.font})[0],btn=this;btn.disabled=true;btn.textContent='보내는 중…';
+ var memo=document.getElementById('memo').value;
+ var d={concept:'[간판 글씨] '+o.k+'. '+o.n,f5:'[간판 색] '+S.cname,floor1:'[작은 글씨 SUYU] '+(S.sub==='1'?'넣기':'이름만'),memo:memo?('[간판 메모] '+memo):'',ua:'sign-page'};
+ fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
+  btn.disabled=false;btn.textContent='다시 보내기';var e=document.getElementById('done');e.style.display='block';e.innerHTML='<b>✓ 전달됐어요</b><br>'+o.n+' · '+S.cname+' · '+(S.sub==='1'?'SUYU 넣기':'이름만');toast('전달됐어요. 감사합니다!')
+ }).catch(function(){btn.disabled=false;btn.textContent='이걸로 할게요';alert('인터넷 연결을 확인하고 다시 눌러 주세요')});
+};
+</script></body></html>
