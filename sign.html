@@ -28,10 +28,12 @@ h2{font-size:17px;font-weight:800;margin:24px 0 10px}
 .card .meta p{font-size:13.5px;color:var(--sub);margin-top:2px}
 .card button{margin-top:10px;width:100%;padding:11px;border-radius:10px;border:none;background:var(--ink);color:#fff;font-weight:700;font-size:15px;font-family:inherit}
 .card.sel button{background:var(--acc)}
-.scene{position:relative;width:100%;aspect-ratio:820/290;overflow:hidden;background:#222}
-.stage{position:absolute;left:0;top:0;width:1024px;height:400px;transform-origin:0 0}
-.stage img{position:absolute;left:0;top:0;width:1024px;height:400px}
-.sign{position:absolute;left:575px;top:236px;transform:translate(-50%,-50%) rotate(3.6deg);text-align:center;white-space:nowrap;display:flex;flex-direction:column;align-items:center}
+.scene{position:relative;width:100%;aspect-ratio:1512/575;overflow:hidden;background:#222}
+.stage{position:absolute;left:0;top:0;width:1512px;height:575px;transform-origin:0 0}
+.stage img{position:absolute;left:0;top:0;width:1512px;height:575px}
+.band{position:absolute;left:0;top:0;width:2880px;height:450px;transform-origin:0 0}
+.box{position:absolute;display:flex;align-items:center;justify-content:center}
+.sign{text-align:center;white-space:nowrap;display:flex;flex-direction:column;align-items:center;transform-origin:center center}
 .sign .row{display:flex;align-items:center;gap:10px}
 .sign svg{display:block;mix-blend-mode:multiply;opacity:.93;overflow:visible}
 .sign .m{display:block;line-height:1;mix-blend-mode:multiply;opacity:.93}
@@ -52,15 +54,21 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
 <div class="wrap">
 <span class="draft">제안 · 고르시면 바로 전달돼요</span>
 <h1>건물에 칠할 영문 이름,<br>어떤 글씨가 좋으세요?</h1>
-<p class="sub" style="margin-top:6px">주차장 위 띠에 페인트로 쓰고, 위에서 작은 조명 3개로 비추는 방식이에요. 아래 사진은 실제 글씨체를 건물 사진 위에 얹어 본 모습이에요.</p>
+<p class="sub" style="margin-top:6px">주차장 바로 위 띠에 페인트로 쓰는 방식이에요. 아래는 11/3 현장 사진(벽등 2개 설치된 모습)에 실제 글씨체를 얹어 본 거예요.</p>
 
-<h2>1. 글씨 색</h2>
+<h2>1. 위치</h2>
+<div class="seg" id="places" style="grid-template-columns:1fr 1fr">
+ <button data-v="c">입구 위 가운데<br><small style="font-weight:500;color:#5E6660">벽등 아래로</small></button>
+ <button data-v="r">벽등 오른쪽<br><small style="font-weight:500;color:#5E6660">더 크게</small></button>
+</div>
+
+<h2>2. 글씨 색</h2>
 <div class="seg" id="colors">
  <button data-c="#2F4A3A" data-n="숲 초록"><span class="sw" style="background:#2F4A3A"></span>숲 초록</button>
  <button data-c="#22262A" data-n="차콜"><span class="sw" style="background:#22262A"></span>차콜</button>
  <button data-c="#9C4A26" data-n="테라코타"><span class="sw" style="background:#9C4A26"></span>테라코타</button>
 </div>
-<h2>2. 북한산 베이스캠프 느낌 넣기</h2>
+<h2>3. 북한산 베이스캠프 느낌 넣기</h2>
 <p class="sub" style="margin:-4px 0 10px">산 마크는 북한산의 옛 이름 '삼각산'의 세 봉우리(인수봉·백운대·만경대)를 선으로 그린 거예요.</p>
 <div class="seg" id="subs" style="grid-template-columns:1fr 1fr">
  <button data-v="3">위에 세 봉우리 + SUYU BASECAMP</button>
@@ -70,7 +78,7 @@ textarea{width:100%;font-family:inherit;font-size:16px;padding:12px;border:1.5px
  <button data-v="0" style="grid-column:1/3">이름만 (깔끔하게)</button>
 </div>
 
-<h2>3. 글씨체</h2>
+<h2>4. 글씨체</h2>
 <div id="opts"></div>
 
 <h2>하고 싶으신 말씀 <span class="sub" style="font-weight:500">선택</span></h2>
@@ -88,50 +96,55 @@ var OPTS=[
  {k:'4',n:'아웃도어 스텐실',d:'등산 장비·캠핑 느낌, 베이스캠프 콘셉트와 잘 맞아요',f:"'Big Shoulders Stencil Display',sans-serif",w:800,ls:'.14em',t:'SARA STAY'},
  {k:'5',n:'손글씨 사인',d:'페인트로 직접 쓴 듯한 따뜻한 느낌',f:"'Yellowtail',cursive",w:400,ls:'0',t:'Sara Stay'},
  {k:'6',n:'빈티지 슬랩',d:'오래된 가게 간판 같은 단단한 느낌',f:"'Zilla Slab',serif",w:700,ls:'.08em',t:'SARA STAY'}];
-var S={color:'#2F4A3A',cname:'숲 초록',sub:'3',font:null};
-try{var sv=JSON.parse(localStorage.getItem('sara_sign_v2')||'{}');for(var k in sv)S[k]=sv[k]}catch(e){}
-function save(){try{localStorage.setItem('sara_sign_v2',JSON.stringify(S))}catch(e){}}
+var S={color:'#2F4A3A',cname:'숲 초록',sub:'4',place:'c',font:null};
+try{var sv=JSON.parse(localStorage.getItem('sara_sign_v3')||'{}');for(var k in sv)S[k]=sv[k]}catch(e){}
+function save(){try{localStorage.setItem('sara_sign_v3',JSON.stringify(S))}catch(e){}}
 var box=document.getElementById('opts');
 OPTS.forEach(function(o){
  var c=document.createElement('div');c.className='card';c.dataset.k=o.k;
- c.innerHTML='<div class="scene"><div class="stage"><img src="facade.jpg" alt="">'+
- [470,575,680].map(function(x){var y=137+0.088*(x-95);return '<div class="glow" style="left:'+x+'px;top:'+(y)+'px"></div><div class="lamp" style="left:'+x+'px;top:'+(y-9)+'px"></div>'}).join('')+
- '<div class="sign"><span class="mk"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="row"><span class="ic"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3.2\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="m">'+o.t+'</span></span><span class="s">SUYU</span></div></div><span class="ai">합성 시안</span></div>'+
+ c.innerHTML='<div class="scene"><div class="stage"><img src="facade_real.jpg" alt=""><div class="band"><div class="box">'+
+ '<div class="sign"><span class="mk"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"4.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="row"><span class="ic"><svg viewBox=\"0 0 120 34\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"4.4\" stroke-linejoin=\"round\" stroke-linecap=\"round\"><path d=\"M2 32 L26 11 L33 17 L50 2 L64 15 L72 9 L90 24 L98 19 L118 32\"/></svg></span><span class="m">'+o.t+'</span></span><span class="s">SUYU</span></div>'+'</div></div></div><span class="ai">합성 시안</span></div>'+
  '<div class="meta"><b>'+o.k+'. '+o.n+'</b><p>'+o.d+'</p><button>이 글씨로 할게요</button></div>';
  box.appendChild(c);
  c.querySelector('button').onclick=function(){S.font=(S.font===o.k)?null:o.k;save();render();toast(S.font?o.n+' 선택':'선택을 취소했어요')};
 });
+function solve(A,b){var n=b.length;for(var i=0;i<n;i++){var m=i;for(var r=i+1;r<n;r++)if(Math.abs(A[r][i])>Math.abs(A[m][i]))m=r;var t=A[i];A[i]=A[m];A[m]=t;t=b[i];b[i]=b[m];b[m]=t;for(var r=i+1;r<n;r++){var f=A[r][i]/A[i][i];for(var c=i;c<n;c++)A[r][c]-=f*A[i][c];b[r]-=f*b[i];}}var x=new Array(n);for(var i=n-1;i>=0;i--){var v=b[i];for(var c=i+1;c<n;c++)v-=A[i][c]*x[c];x[i]=v/A[i][i];}return x}
+function homo(w,h,q){var src=[[0,0],[w,0],[w,h],[0,h]],A=[],b=[];for(var i=0;i<4;i++){var X=src[i][0],Y=src[i][1],u=q[i][0],v=q[i][1];A.push([X,Y,1,0,0,0,-u*X,-u*Y]);b.push(u);A.push([0,0,0,X,Y,1,-v*X,-v*Y]);b.push(v);}var k=solve(A,b);return 'matrix3d('+[k[0],k[3],0,k[6],k[1],k[4],0,k[7],0,0,1,0,k[2],k[5],0,1].join(',')+')'}
+var K=1512/3024,Y0=1450;
+var QUAD=[[0,2070],[2860,1632],[2860,2190],[0,2350]].map(function(p){return [p[0]*K,(p[1]-Y0)*K]});
+var MAT=homo(2880,450,QUAD);
+var PL={c:{x:0.26,y:0.38,w:0.54,h:0.58},r:{x:0.51,y:0.14,w:0.46,h:0.78}};
 function fit(){
  document.querySelectorAll('.card').forEach(function(c){
   var o=OPTS.filter(function(x){return x.k===c.dataset.k})[0];
-  var sc=c.querySelector('.scene'),st=c.querySelector('.stage');st.style.transform='scale('+(sc.clientWidth/820)+') translate(-160px,-70px)';
-  var m=c.querySelector('.m'),s=c.querySelector('.s');
-  m.style.fontFamily=o.f;m.style.fontWeight=o.w;m.style.letterSpacing=o.ls;m.style.paddingLeft=o.ls;m.style.color=S.color;s.style.color=S.color;
-  s.style.display=S.sub==='1'?'block':'none';s.style.marginTop=o.k==='5'?'16px':'7px';
-  var v=S.sub,mk=c.querySelector('.mk'),ic=c.querySelector('.ic');mk.style.color=S.color;ic.style.color=S.color;
-  var subT={'1':'SUYU','2':'BUKHANSAN BASECAMP','3':'SUYU BASECAMP','4':'BUKHANSAN BASECAMP'}[v]||'';
-  s.textContent=subT;s.style.display=subT?'block':'none';s.style.fontSize=(subT.length>6?11:13)+'px';s.style.letterSpacing=(subT.length>6?'.42em':'.55em');s.style.paddingLeft=s.style.letterSpacing;
+  var sc=c.querySelector('.scene'),st=c.querySelector('.stage');st.style.transform='scale('+(sc.clientWidth/1512)+')';
+  c.querySelector('.band').style.transform=MAT;
+  var P=PL[S.place]||PL.c,bx=c.querySelector('.box');bx.style.left=(P.x*2880)+'px';bx.style.top=(P.y*450)+'px';bx.style.width=(P.w*2880)+'px';bx.style.height=(P.h*450)+'px';
+  var sg=c.querySelector('.sign'),m=c.querySelector('.m'),s=c.querySelector('.s'),mk=c.querySelector('.mk'),ic=c.querySelector('.ic');
+  m.style.fontFamily=o.f;m.style.fontWeight=o.w;m.style.letterSpacing=o.ls;m.style.paddingLeft=o.ls;
+  [m,s,mk,ic].forEach(function(e){e.style.color=S.color});
+  var v=S.sub,subT={'1':'SUYU','2':'BUKHANSAN BASECAMP','3':'SUYU BASECAMP','4':'BUKHANSAN BASECAMP'}[v]||'';
+  m.style.fontSize='100px';var capH=72;
+  s.textContent=subT;s.style.display=subT?'block':'none';s.style.fontSize=(subT.length>6?22:28)+'px';s.style.letterSpacing=(subT.length>6?'.42em':'.55em');s.style.paddingLeft=s.style.letterSpacing;s.style.marginTop=(o.k==='5'?'26px':'14px');
   mk.style.display=v==='3'?'block':'none';ic.style.display=v==='4'?'block':'none';
-  m.style.fontSize='100px';
-  var target=(o.k==='2'?460:(o.k==='5'?380:410));
-  var maxH={'0':60,'1':50,'2':48,'3':34,'4':44}[v]; if(o.k==='5')maxH+=(v==='0'?12:4);
-  var fs=Math.min(100*(v==='4'?target-80:target)/m.offsetWidth,maxH/0.72);m.style.fontSize=fs+'px';
-  var capH=fs*0.72; mk.querySelector('svg').style.width=(v==='3'?84:0)+'px';mk.querySelector('svg').style.height=(v==='3'?22:0)+'px';mk.style.marginBottom='3px';
-  c.querySelector('.sign').style.top=(v==='3'?226:236)+'px';
-  var lp=c.querySelectorAll('.lamp');if(lp[1])lp[1].style.display=v==='3'?'none':'';
-  if(o.k==='5'&&subT)s.style.marginTop='10px';
-  ic.querySelector('svg').style.width=(capH*2.1)+'px';ic.querySelector('svg').style.height=(capH*0.6+6)+'px';
-  s.style.transform=v==='4'?('translateX('+((capH*2.1+10)/2)+'px)'):'none';
+  var ms=mk.querySelector('svg');ms.style.width='170px';ms.style.height='46px';mk.style.marginBottom='8px';
+  var is=ic.querySelector('svg');is.style.width=(capH*2.1)+'px';is.style.height=(capH*0.6+10)+'px';
+  c.querySelector('.row').style.gap='18px';
+  s.style.transform=v==='4'?('translateX('+((capH*2.1+18)/2)+'px)'):'none';
+  sg.style.transform='none';var w=sg.offsetWidth,h=sg.offsetHeight;
+  var k=Math.min(bx.offsetWidth*0.96/w,bx.offsetHeight*0.92/h);sg.style.transform='scale('+k+')';
  });
 }
 function render(){
  document.querySelectorAll('#colors button').forEach(function(b){b.classList.toggle('sel',b.dataset.c===S.color)});
  document.querySelectorAll('#subs button').forEach(function(b){b.classList.toggle('sel',b.dataset.v===S.sub)});
+ document.querySelectorAll('#places button').forEach(function(b){b.classList.toggle('sel',b.dataset.v===S.place)});
  document.querySelectorAll('.card').forEach(function(c){var on=c.dataset.k===S.font;c.classList.toggle('sel',on);c.querySelector('button').textContent=on?'✓ 선택했어요 (다시 누르면 취소)':'이 글씨로 할게요'});
  fit();
 }
 document.querySelectorAll('#colors button').forEach(function(b){b.onclick=function(){S.color=b.dataset.c;S.cname=b.dataset.n;save();render()}});
 document.querySelectorAll('#subs button').forEach(function(b){b.onclick=function(){S.sub=b.dataset.v;save();render()}});
+document.querySelectorAll('#places button').forEach(function(b){b.onclick=function(){S.place=b.dataset.v;save();render()}});
 window.addEventListener('resize',fit);
 (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(function(){render();window.__ready=1});
 render();
@@ -142,9 +155,9 @@ document.getElementById('send').onclick=function(){
  if(!S.font){alert('글씨체를 하나 골라 주세요');return}
  var o=OPTS.filter(function(x){return x.k===S.font})[0],btn=this;btn.disabled=true;btn.textContent='보내는 중…';
  var memo=document.getElementById('memo').value;
- var d={concept:'[간판 글씨] '+o.k+'. '+o.n,f5:'[간판 색] '+S.cname,floor1:'[베이스캠프 요소] '+SUBN[S.sub],memo:memo?('[간판 메모] '+memo):'',ua:'sign-page'};
+ var d={concept:'[간판 글씨] '+o.k+'. '+o.n,f5:'[간판 색] '+S.cname,floor1:'[베이스캠프 요소] '+SUBN[S.sub],memo:'[간판 위치] '+(S.place==='r'?'벽등 오른쪽':'입구 위 가운데')+(memo?(' / [간판 메모] '+memo):''),ua:'sign-page'};
  fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
-  btn.disabled=false;btn.textContent='다시 보내기';var e=document.getElementById('done');e.style.display='block';e.innerHTML='<b>✓ 전달됐어요</b><br>'+o.n+' · '+S.cname+' · '+SUBN[S.sub];toast('전달됐어요. 감사합니다!')
+  btn.disabled=false;btn.textContent='다시 보내기';var e=document.getElementById('done');e.style.display='block';e.innerHTML='<b>✓ 전달됐어요</b><br>'+o.n+' · '+S.cname+' · '+SUBN[S.sub]+' · '+(S.place==='r'?'벽등 오른쪽':'입구 위 가운데');toast('전달됐어요. 감사합니다!')
  }).catch(function(){btn.disabled=false;btn.textContent='이걸로 할게요';alert('인터넷 연결을 확인하고 다시 눌러 주세요')});
 };
 </script></body></html>
