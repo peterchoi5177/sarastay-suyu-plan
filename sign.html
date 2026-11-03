@@ -121,6 +121,7 @@ function fit(){
   var lp=c.querySelectorAll('.lamp');if(lp[1])lp[1].style.display=v==='3'?'none':'';
   if(o.k==='5'&&subT)s.style.marginTop='10px';
   ic.querySelector('svg').style.width=(capH*2.1)+'px';ic.querySelector('svg').style.height=(capH*0.6+6)+'px';
+  s.style.transform=v==='4'?('translateX('+((capH*2.1+10)/2)+'px)'):'none';
  });
 }
 function render(){
