@@ -1,5 +1,5 @@
 <!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="build" content="2026-11-05a">
+<meta name="build" content="2026-11-05c">
 <script>
 (function(){try{
   var mine=document.querySelector('meta[name=build]').content;
@@ -195,7 +195,33 @@ table.it em{font-style:normal;font-size:11px;color:var(--acc);font-weight:700}
   </div>
 
   
-  <h2>오픈 일정</h2>
+  <button class="pick a" onclick="document.querySelector('.nav [data-p=sched]').click()">오픈 일정 보기 →</button>
+
+  
+
+  <h2>확정 사항</h2>
+  <div class="card"><ul class="list">
+    <li><div class="ic ok">✓</div><div><b>콘셉트 A안 · 북한산 베이스캠프</b><small>10/26 선택</small></div></li>
+    <li><div class="ic ok">✓</div><div><b>1층·지하 공동 운영</b><small>10/26 동의</small></div></li>
+    <li><div class="ic ok">✓</div><div><b>공사 없이 비품·집기로 구성</b><small>간판은 페인트 글씨 + 조명</small></div></li>
+  </ul></div>
+
+  <div class="swipe">
+    <figure><img src="a_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>외관 <span>숲 초록 간판</span></figcaption></figure>
+    <figure><img src="a_front.jpg" alt=""><span class="ai">AI 연출</span><figcaption>1층 프론트 <span>무인 커피</span></figcaption></figure>
+    <figure><img src="a_room.jpg" alt=""><span class="ai">AI 연출</span><figcaption>객실 <span>봉우리 이름 방</span></figcaption></figure>
+    <figure><img src="a_kitchen.jpg" alt=""><span class="ai">AI 연출</span><figcaption>2층 공유주방</figcaption></figure>
+    <figure><img src="a_roof.jpg" alt=""><span class="ai">AI 연출</span><figcaption>옥상 데크</figcaption></figure>
+  </div>
+  <p class="hint">현장 사진 기반 분위기 참고 이미지 (AI 연출)</p>
+  <button class="pick a" onclick="document.querySelector('.nav [data-p=step]').click()">단계별 계획 보기 →</button>
+</section>
+
+<!-- SCHED -->
+<section class="page" id="p-sched">
+  <span class="draft">계약 체결 · 11/4 업데이트</span>
+  <h1>오픈 일정</h1>
+  <p class="sub" style="margin-top:6px">12/5 판매 오픈 · 12/15 오픈 목표. 주황색은 대표님 확인·준비 항목.</p>
   <div class="card">
     <div class="wk"><div class="dot"></div><div class="t">브랜딩·오픈 기획<span>11/4~11/16</span></div><ul>
       <li>브랜드 가이드 (색·서체·문구 톤), 객실·공간 이름</li>
@@ -233,26 +259,6 @@ table.it em{font-style:normal;font-size:11px;color:var(--acc);font-weight:700}
     </ul><div class="ms">12/15 오픈</div></div>
     <p class="note">주황색은 대표님 확인·준비 항목. 관광숙박업 등록증이 늦어지면 판매채널 등록과 판매 오픈도 같이 늦어짐. 배송·설치 업체 일정에 따라 조정될 수 있음.</p>
   </div>
-
-  <h2>확인 요청 사항 <span class="sub" id="leftcnt"></span></h2>
-  <div class="card"><ul class="list" id="todo"></ul></div>
-
-  <h2>확정 사항</h2>
-  <div class="card"><ul class="list">
-    <li><div class="ic ok">✓</div><div><b>콘셉트 A안 · 북한산 베이스캠프</b><small>10/26 선택</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>1층·지하 공동 운영</b><small>10/26 동의</small></div></li>
-    <li><div class="ic ok">✓</div><div><b>공사 없이 비품·집기로 구성</b><small>간판은 페인트 글씨 + 조명</small></div></li>
-  </ul></div>
-
-  <div class="swipe">
-    <figure><img src="a_ext.jpg" alt=""><span class="ai">AI 연출</span><figcaption>외관 <span>숲 초록 간판</span></figcaption></figure>
-    <figure><img src="a_front.jpg" alt=""><span class="ai">AI 연출</span><figcaption>1층 프론트 <span>무인 커피</span></figcaption></figure>
-    <figure><img src="a_room.jpg" alt=""><span class="ai">AI 연출</span><figcaption>객실 <span>봉우리 이름 방</span></figcaption></figure>
-    <figure><img src="a_kitchen.jpg" alt=""><span class="ai">AI 연출</span><figcaption>2층 공유주방</figcaption></figure>
-    <figure><img src="a_roof.jpg" alt=""><span class="ai">AI 연출</span><figcaption>옥상 데크</figcaption></figure>
-  </div>
-  <p class="hint">현장 사진 기반 분위기 참고 이미지 (AI 연출)</p>
-  <button class="pick a" onclick="document.querySelector('.nav [data-p=step]').click()">단계별 계획 보기 →</button>
 </section>
 
 <!-- STEP -->
@@ -441,117 +447,28 @@ table.it em{font-style:normal;font-size:11px;color:var(--acc);font-weight:700}
   <p class="note">린넨·커튼: 바이바우 2022년 거래 단가에 인상분 20%를 더한 추정치, 최신 견적으로 확정 (커튼 레일·고리 별도). 견적 예정 항목(도어락·CCTV·간판·촬영·안내물·소모품)은 업체 견적 후 확정. 이미 설치된 침대 프레임·매트리스, 주방 싱크·인덕션, 조명, 에어컨, 전기 보일러는 제외. 주문·결제는 당사가 사라스테이 사업자 명의 카드로 진행. 가격은 수시 변동.</p>
 </section>
 
-<!-- ANSWER -->
-<section class="page" id="p-answer">
-  <span class="draft">선택 후 답변 완료</span>
-  <h1>확인 요청 사항</h1>
-  <p class="sub">선택 내용은 이 기기에 저장됨. 같은 버튼을 다시 누르면 취소. 선택 후 맨 아래 <b>답변 완료</b>를 누르면 당사로 전달.</p>
 
-  <label class="q">1. 11실 단계별 오픈</label>
-  <div class="seg" data-k="concept">
-    <button data-v="[오픈 방식] 11실로 먼저, 단계별로">동의</button>
-    <button data-v="[오픈 방식] 만나서 상의">협의 필요</button>
-  </div>
-
-  <label class="q">2. 오픈 초기 임시 매니저 (최대 3개월)</label>
-  <div class="seg" data-k="floor1">
-    <button data-v="[임시 매니저] 좋아요">동의</button>
-    <button data-v="[임시 매니저] 상의 필요">협의 필요</button>
-  </div>
-
-  <label class="q">3. 3단계 방향 (현재 의견) <small>추후 변경 가능</small></label>
-  <div class="seg" data-k="f5">
-    <button data-v="[3단계] 기본: 11실 무인">11실 무인</button>
-    <button data-v="[3단계] A: 5·6층 가족실">A · 가족실</button>
-    <button data-v="[3단계] B: 매니저+볼런티어 14실">B · 14실</button>
-    <button data-v="[3단계] 운영 후 결정">운영 후 결정</button>
-  </div>
-
-  <label class="q">4. 1단계 집기 예상 비용 약 2,870만 원</label>
-  <div class="seg" data-k="power">
-    <button data-v="[1단계 집기] 이대로 진행">진행</button>
-    <button data-v="[1단계 집기] 조정 필요">조정 필요</button>
-  </div>
-
-  <label class="q">5. 오픈 준비 비용 600만 원</label>
-  <div class="seg" data-k="budget">
-    <button data-v="[오픈 준비 600만] 좋아요">동의</button>
-    <button data-v="[오픈 준비 600만] 상의 필요">협의 필요</button>
-  </div>
-
-  <label class="q">6. 운영 수수료 방식</label>
-  <div class="seg three" data-k="nc2">
-    <button data-v="[수수료] 옵션 1 매출 10%">매출 10%</button>
-    <button data-v="[수수료] 옵션 2 영업이익 30%">이익 30%</button>
-    <button data-v="[수수료] 상의 필요">협의 필요</button>
-  </div>
-
-  <label class="q">7. 날인 가능 날짜</label>
-  <input type="date" id="cdate" min="2026-11-02" max="2026-11-30">
-
-  <label class="q">8. 기타 의견 <small>선택</small></label>
-  <textarea id="memo" placeholder="문의·변경 요청 사항"></textarea>
-
-  <div class="box o" id="donebox" style="display:none;text-align:center"><b>✓ 답변 전달 완료</b><br><span id="donetime"></span><br>변경 시 수정 후 다시 전송</div>
-  <button class="send" id="send">답변 완료</button>
-  <button id="reset" style="width:100%;margin-top:10px;padding:13px;border-radius:12px;background:#fff;border:1.5px solid var(--line);color:var(--sub);font-weight:700;font-size:15px">선택 초기화</button>
-  <p class="foot">마지막으로 전송한 답변 기준으로 확인</p>
-</section>
 
 <p class="foot">(주)인장매니지먼트 · 사라스테이 수유 최종 제안 (2026.11.1) · 모든 금액은 추정치이며 견적·실적에 따라 변경 가능</p>
 </div>
 
 <nav class="nav">
   <button data-p="home" class="on"><i>⌂</i>홈</button>
+  <button data-p="sched"><i>◷</i>일정</button>
   <button data-p="step"><i>↗</i>단계별</button>
   <button data-p="num"><i>₩</i>숫자</button>
   <button data-p="items"><i>▦</i>물품</button>
   <button data-p="terms"><i>▤</i>조건</button>
-  <button data-p="answer"><i>✎</i>답하기<span class="badge" id="badge"></span></button>
 </nav>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
-  var KEY='sara_suyu_answers_v2';
-  var A={}; try{A=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){A={}}
-  function save(){try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){} render()}
-  function toast(t){var el=document.getElementById('toast');el.textContent=t;el.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(function(){el.classList.remove('on')},1600)}
   function go(p){document.querySelectorAll('.page').forEach(function(s){s.classList.toggle('on',s.id==='p-'+p)});document.querySelectorAll('.nav button').forEach(function(b){b.classList.toggle('on',b.dataset.p===p)});window.scrollTo(0,0);history.replaceState(null,'','#'+p)}
   document.querySelectorAll('.nav button').forEach(function(b){b.onclick=function(){go(b.dataset.p)}});
   if(location.hash){var h=location.hash.slice(1);if(document.getElementById('p-'+h))go(h)}
   var d=Math.ceil((new Date('2026-12-15T00:00:00+09:00')-new Date())/86400000);
   document.getElementById('dday').textContent=d>0?('오픈 D-'+d):(d===0?'오픈 D-DAY':'오픈 완료');
-  document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.onclick=function(){if(A[sg.dataset.k]===b.dataset.v){delete A[sg.dataset.k];toast('선택 취소')}else{A[sg.dataset.k]=b.dataset.v}save()}})});
-  document.getElementById('reset').onclick=function(){if(!confirm('선택 내용을 모두 지울까요?'))return;A={};try{localStorage.removeItem(KEY)}catch(e){};document.getElementById('send').textContent='답변 완료';['cdate','memo'].forEach(function(id){document.getElementById(id).value=''});showDone();render();toast('초기화 완료');window.scrollTo(0,0)};
-  ['cdate','memo'].forEach(function(id){var el=document.getElementById(id);if(A[id])el.value=A[id];el.addEventListener('input',function(){A[id]=el.value;try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){};render()})});
-  var Q=[['concept','11실 단계별 오픈','동의 / 협의 필요'],['floor1','임시 매니저','최대 3개월'],['f5','3단계 방향','현재 의견 (추후 변경 가능)'],['power','1단계 집기 예상 비용','약 2,870만 원'],['budget','오픈 준비 비용','600만 원'],['nc2','운영 수수료 방식','매출 10% 또는 영업이익 30%'],['cdate','날인 날짜','11/2~11/4 중']];
-  function render(){
-    document.querySelectorAll('.seg').forEach(function(sg){sg.querySelectorAll('button').forEach(function(b){b.classList.toggle('sel',A[sg.dataset.k]===b.dataset.v)})});
-    var ul=document.getElementById('todo'),left=0,h='';
-    Q.forEach(function(q,i){var v=A[q[0]];if(!v)left++;h+='<li><div class="ic'+(v?' ok':'')+'">'+(v?'✓':(i+1))+'</div><div><b>'+q[1]+'</b><small>'+(v?String(v).replace(/^\[[^\]]+\]\s*/,''):q[2])+'</small></div></li>'});
-    ul.innerHTML=h+'<li><div style="flex:1"><button class="pick" style="margin-top:4px" onclick="document.querySelector(\'.nav [data-p=answer]\').click()">'+(left?'답변하기':(A._sent?'답변 전달 완료 · 다시 보기':'선택 완료 · 답변 전송하기'))+'</button></div></li>';
-    document.getElementById('leftcnt').textContent=left?('· '+left+'개 남음'):'· 완료';
-    var bd=document.getElementById('badge');bd.textContent=left||'';bd.style.display=left?'':'none';
-  }
-  render();
-  var URL_='https://script.google.com/macros/s/AKfycbxxddfsFK8R584qflq9rOtm8kD4Y6Kd_nQgxS3VoQ97BN5aRsysSjzEtl3ow4PNwwFNqw/exec';
-  function showDone(){var b=document.getElementById('donebox');if(A._sent){b.style.display='';document.getElementById('donetime').textContent='보낸 시각: '+A._sent}else{b.style.display='none'}}
-  showDone();
-  document.getElementById('send').onclick=function(){
-    var miss=Q.filter(function(q){return !A[q[0]]}).length;
-    if(miss&&!confirm('미선택 항목 '+miss+'개. 선택한 항목만 전송할까요?'))return;
-    var btn=this;btn.disabled=true;btn.textContent='보내는 중…';
-    var d={};['concept','nc1','nc2','nc3','nc4','f5','floor1','power','budget','cdate','memo'].forEach(function(k){d[k]=A[k]||''});
-    d.nc1='[최종 제안 v2]';
-    d.ua=(navigator.userAgent||'').slice(0,120);
-    fetch(URL_,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(d)}).then(function(){
-      var t=new Date();A._sent=(t.getMonth()+1)+'/'+t.getDate()+' '+('0'+t.getHours()).slice(-2)+':'+('0'+t.getMinutes()).slice(-2);
-      try{localStorage.setItem(KEY,JSON.stringify(A))}catch(e){}
-      btn.disabled=false;btn.textContent='답변 다시 보내기';showDone();render();toast('전달 완료');
-    }).catch(function(){btn.disabled=false;btn.textContent='답변 완료';alert('인터넷 연결 확인 후 다시 시도')});
-  };
-  if(A._sent)document.getElementById('send').textContent='답변 다시 보내기';
 })();
 </script>
 </body></html>
