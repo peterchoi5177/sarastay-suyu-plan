@@ -1,0 +1,143 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>사라스테이 수유 · 구매 진행 현황</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{--ink:#1F2A24;--sub:#5E6660;--line:#E4E2DC;--bg:#F5F3EE;--card:#fff;--acc:#E0702B;--accl:#FCE9DC;--for:#2F4A3A;--forl:#E3ECE6;--ok:#1E8E5A;--okl:#E3F4EB;--warn:#B54708;--warnl:#FEF0E6}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55;padding-bottom:40px}
+.top{position:sticky;top:0;z-index:20;background:var(--ink);color:#fff;padding:12px 18px;display:flex;align-items:center;gap:10px}
+.top .logo{font-weight:800;font-size:16px;letter-spacing:.3px}
+.top .logo span{color:#F3B48A;font-weight:600;font-size:13px;margin-left:6px}
+.top .sp{flex:1}.top .d{font-size:12px;background:#ffffff1f;padding:4px 10px;border-radius:99px;font-weight:700}
+.wrap{max-width:720px;margin:0 auto;padding:16px}
+h1{font-size:22px;font-weight:800;line-height:1.3}
+h2{font-size:17px;font-weight:800;margin:26px 0 10px;display:flex;align-items:baseline;gap:8px}
+h2 small{font-size:13px;color:var(--sub);font-weight:600}
+.sub{color:var(--sub);font-size:13.5px;margin-top:4px}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:14px 0 10px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.kpi .v{font-size:21px;font-weight:800}.kpi .l{font-size:12.5px;color:var(--sub);font-weight:600}
+.kpi.dark{background:var(--for);border-color:var(--for);color:#fff}.kpi.dark .l{color:#CFE0D5}
+.bar{background:#E9E6DF;border-radius:99px;height:16px;overflow:hidden;display:flex;margin-top:6px}
+.bar i{display:block;height:100%}.bar .p{background:var(--for)}.bar .c{background:#9DB8A6}.bar .t{background:repeating-linear-gradient(45deg,#E7C9B3,#E7C9B3 5px,#F3DFD0 5px,#F3DFD0 10px)}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:12.5px;color:var(--sub);margin-top:8px}
+.legend b{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 14px;margin-bottom:12px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{text-align:left;font-size:12px;color:var(--sub);font-weight:700;padding:9px 6px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+td.n,th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+td.dt{white-space:nowrap;color:var(--sub);font-size:13px}
+td small{display:block;color:var(--sub);font-size:12.5px}
+tr.sum td{font-weight:800;border-top:2px solid var(--ink)}
+.ch{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:6px;background:var(--forl);color:var(--for);white-space:nowrap}
+.st{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.st.ok{background:var(--okl);color:var(--ok)}.st.go{background:var(--accl);color:var(--acc)}.st.wait{background:#EEF0F2;color:#4A5560}.st.no{background:var(--warnl);color:var(--warn)}
+.note{background:var(--warnl);border:1px solid #F5D3BC;border-radius:14px;padding:12px 14px;font-size:14px;margin-bottom:12px}
+.note li{margin-left:18px;margin-top:4px}
+.foot{font-size:12.5px;color:var(--sub);margin-top:18px;line-height:1.7}
+</style></head><body>
+<div class="top"><div class="logo">SARA STAY<span>수유</span></div><div class="sp"></div><div class="d" id="asof"></div></div>
+<div class="wrap">
+  <h1>집기·비품 구매 진행 현황</h1>
+  <p class="sub">결제 완료, 장바구니(결제 전), 아직 살 것을 한 번에 봅니다. 금액은 모두 VAT 포함입니다.</p>
+
+  <div class="kpis">
+    <div class="kpi dark"><div class="v" id="k-paid"></div><div class="l">결제 완료</div></div>
+    <div class="kpi"><div class="v" id="k-budget"></div><div class="l">예산 (예비비 10% 포함)</div></div>
+    <div class="kpi"><div class="v" id="k-left"></div><div class="l">남은 예산</div></div>
+    <div class="kpi"><div class="v" id="k-cart"></div><div class="l">장바구니 (결제 전)</div></div>
+  </div>
+  <div class="card" style="padding:12px 14px">
+    <div style="font-size:13.5px;font-weight:700" id="bar-title"></div>
+    <div class="bar"><i class="p" id="b-p"></i><i class="c" id="b-c"></i><i class="t" id="b-t"></i></div>
+    <div class="legend"><span><b style="background:var(--for)"></b>결제 완료</span><span><b style="background:#9DB8A6"></b>장바구니</span><span><b style="background:#E7C9B3"></b>아직 살 것 (예산 기준)</span></div>
+  </div>
+
+  <h2>결제 완료 <small id="paid-n"></small></h2>
+  <div class="card"><table id="t-paid"></table></div>
+
+  <h2>장바구니 · 결제 전 <small id="cart-n"></small></h2>
+  <div class="card"><table id="t-cart"></table></div>
+
+  <h2>아직 살 것 · 진행 중 <small>예산 기준 금액</small></h2>
+  <div class="card"><table id="t-todo"></table></div>
+
+  <h2>예산과 달라진 것</h2>
+  <div class="note"><ul id="diff"></ul></div>
+
+  <p class="foot">
+    예산 기준: 저예산 구매목록 (11/1 쇼핑몰 검색가, TV·객실 소품·청소 가전 추가분 포함, 예비비 10% 포함).<br>
+    11/4 페이지의 '1단계 집기 예상 비용 약 2,870만'은 VAT 별도이고 TV·객실 소품 추가 전 금액입니다.<br>
+    '아직 살 것'은 견적 전이라 예산 금액으로 넣었고, 견적이 나오면 실제 금액으로 바꿉니다.
+  </p>
+</div>
+<script>
+// ===== 여기만 고치면 됩니다 =====
+const ASOF = '11/22 기준';
+const BUDGET = 37038820;
+const PAID = [ // [날짜, 구매처, 내용, 금액, 메모]
+  ['11/19','네이버','린넨 카트 + 청소 카트 (고래카트)',268000,'11/25 도착 예정'],
+  ['11/19','네이버','로고 매트 2장 (앤트랩)',116000,'11/27까지 발송'],
+  ['11/19','네이버','네이버플러스 멤버십 (매월)',4900,'할인·적립용'],
+  ['11/19','쿠팡','미니 냉장고 47L 5대',479750,'도착'],
+  ['11/20','쿠팡','43인치 이동식 TV 1, 미니 냉장고 1, 바테이블 1, 드라이어 1, 벽걸이 옷걸이 1, 거울 1',682310,'도착'],
+  ['11/22','쿠팡','43인치 이동식 TV 9, 미니 냉장고 5, 드라이어 5, 거울 10, 벽걸이 옷걸이 10',4488370,'상품 준비 중'],
+  ['11/20','테무','장식·조명 등 (1차)',87724,'11/26~12/3 도착'],
+  ['11/20','테무','맞춤 제작 소품 (깃발·카라비너·스탬프 등)',240291,'11/26~12/8 도착'],
+  ['11/20','테무','소품 (3차)',59464,'11/26~12/3 도착'],
+  ['입금','드리움','블라인드 17창 (롤스크린 14 + 허니콤 3, 방염, 시공 포함)',1650000,'견적 157만 → 150만 + VAT'],
+];
+const CART = [ // [구매처, 내용, 금액, 메모]
+  ['네이버','26개: 캐리어 거치대, 식탁 세트, 욕실 디스펜서, 소화기, 선반·랙, 책장, 안내 데스크, 사무 책상·의자·복합기, 휴지통, 티슈 케이스, 수저·냄비·조리도구, 전자레인지, 정원등 등',2636500,''],
+  ['쿠팡','7개: 수납장 4종(비교용), 바테이블, 전기포트 2종',1058310,'수납장은 하나만 고르면 줄어듦'],
+  ['이케아','21종: 1층·지하·2층 주방·옥상 꾸미기',1641500,'11/17 금액'],
+];
+const TODO = [ // [항목, 예산, 상태, 상태표시(ok/go/wait/no), 메모]
+  ['린넨 (이불솜·베개솜·방수패드·커버·시트·베개커버·수건, 퀸 15개 기준)',4479450,'견적 대기','go','부산 거래처 11/18 문의'],
+  ['도어락 15개',4125000,'견적 협의 중','go','현장 미팅 11/19'],
+  ['CCTV',1650000,'견적 협의 중','go','도어락 업체와 함께'],
+  ['간판·층별 사인·객실 번호 + 안내물',1870000,'견적 대기','go','현장 미팅 11/20'],
+  ['세탁기·건조기 (직원용)',1951500,'아직 안 삼','no','설치 기사 일정 필요'],
+  ['2층 공용 냉장고',650310,'아직 안 삼','no','미니 냉장고 산 뒤 필요 여부 확인'],
+  ['Wi-Fi 공유기 6대',335400,'아직 안 삼','no',''],
+  ['오픈 초기 소모품 (휴지·세제·어메니티)',880000,'오픈 직전','wait',''],
+  ['사진 촬영',550000,'세팅 후','wait',''],
+];
+const DIFF = [
+  '미니 냉장고 11대 1,092,750원: 예산에서는 2층 공용 냉장고로 대신하기로 하고 뺐던 항목입니다.',
+  '블라인드 1,650,000원: 예산의 방염 커튼 723,600원보다 약 93만 원 많습니다.',
+  'TV 10대 3,572,800원 (스탠드 포함형): 예산 17대분 7,187,600원 안쪽입니다.',
+];
+// ===== 여기까지 =====
+const won=n=>n.toLocaleString('ko-KR')+'원';
+const man=n=>(Math.round(n/10000)).toLocaleString('ko-KR')+'만';
+const sum=(a,i)=>a.reduce((s,r)=>s+r[i],0);
+const paid=sum(PAID,3), cart=sum(CART,2), todo=sum(TODO,1);
+document.getElementById('asof').textContent=ASOF;
+document.getElementById('k-paid').textContent=man(paid)+' ('+Math.round(paid/BUDGET*100)+'%)';
+document.getElementById('k-budget').textContent=man(BUDGET);
+document.getElementById('k-left').textContent=man(BUDGET-paid);
+document.getElementById('k-cart').textContent=man(cart);
+const pct=n=>Math.min(100,n/BUDGET*100);
+document.getElementById('b-p').style.width=pct(paid)+'%';
+document.getElementById('b-c').style.width=pct(cart)+'%';
+document.getElementById('b-t').style.width=Math.max(0,Math.min(100-pct(paid)-pct(cart),pct(todo)))+'%';
+document.getElementById('bar-title').textContent='결제 + 장바구니 + 아직 살 것 = '+man(paid+cart+todo)+' / 예산 '+man(BUDGET)+' ('+Math.round((paid+cart+todo)/BUDGET*100)+'%)';
+document.getElementById('paid-n').textContent=PAID.length+'건 · '+won(paid);
+document.getElementById('cart-n').textContent=won(cart);
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+document.getElementById('t-paid').innerHTML='<tr><th>날짜</th><th>구매처</th><th>내용</th><th class="n">금액</th></tr>'+
+  PAID.map(r=>`<tr><td class="dt">${r[0]}</td><td><span class="ch">${r[1]}</span></td><td>${esc(r[2])}${r[4]?`<small>${esc(r[4])}</small>`:''}</td><td class="n">${won(r[3])}</td></tr>`).join('')+
+  `<tr class="sum"><td colspan="3">합계</td><td class="n">${won(paid)}</td></tr>`;
+document.getElementById('t-cart').innerHTML='<tr><th>구매처</th><th>내용</th><th class="n">금액</th></tr>'+
+  CART.map(r=>`<tr><td><span class="ch">${r[0]}</span></td><td>${esc(r[1])}${r[3]?`<small>${esc(r[3])}</small>`:''}</td><td class="n">${won(r[2])}</td></tr>`).join('')+
+  `<tr class="sum"><td colspan="2">합계</td><td class="n">${won(cart)}</td></tr>`;
+document.getElementById('t-todo').innerHTML='<tr><th>항목</th><th>상태</th><th class="n">예산</th></tr>'+
+  TODO.map(r=>`<tr><td>${esc(r[0])}${r[4]?`<small>${esc(r[4])}</small>`:''}</td><td><span class="st ${r[3]}">${r[2]}</span></td><td class="n">${won(r[1])}</td></tr>`).join('')+
+  `<tr class="sum"><td colspan="2">합계</td><td class="n">${won(todo)}</td></tr>`;
+document.getElementById('diff').innerHTML=DIFF.map(s=>`<li>${esc(s)}</li>`).join('');
+</script>
+</body></html>
